@@ -24,16 +24,6 @@ class _LoginState extends State<Login> {
             child: TextFormField(
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Username',
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.fromLTRB(50, 0, 50, 12.5),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
                 hintText: 'Password',
               ),
             ),

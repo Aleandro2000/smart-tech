@@ -36,7 +36,10 @@ class _TermsState extends State<Terms> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : PDFViewer(document: _doc),
+          : PDFViewer(
+              document: _doc,
+              backgroundColor: Colors.white,
+            ),
     );
   }
 }

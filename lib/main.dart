@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 
@@ -19,8 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
-        '/login': (context) => Login(),
-        '/register': (context) => Register(),
+        '/login': (context) => const Login(),
+        '/register': (context) => const Register(),
       },
     );
   }

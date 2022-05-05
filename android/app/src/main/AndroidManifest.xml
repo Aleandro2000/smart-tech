@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hard_and_soft_mobile">
    <application
-        android:label="hard_and_soft_mobile"
+        android:label="Smart Tech"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

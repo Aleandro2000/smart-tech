@@ -5,12 +5,12 @@ import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:hard_and_soft_mobile/src/splashScreen/splashScreen.dart';
 
 Future main() async {
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const Splash(),
+      home: FutureBuilder(
+        future: _fbApp,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print('The app has an error! ${snapshot.error.toString()}');
+          } else if (snapshot.hasData) {
+            return const Splash();
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
       routes: {
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),

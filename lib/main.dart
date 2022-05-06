@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hard_and_soft_mobile/src/splashScreen/splashScreen.dart';
 
 Future main() async {
   await dotenv.load(fileName: '.env');
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: '/login',
+      home: const Splash(),
       routes: {
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),

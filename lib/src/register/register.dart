@@ -35,10 +35,10 @@ class _RegisterState extends State<Register> {
               alignment: Alignment.center,
               margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
               child: TextFormField(
-                validator: (value) => requiredValidation(value!),
+                validator: (value) => emailValidator(value!),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Username',
+                  hintText: 'Email',
                 ),
               ),
             ),
@@ -127,6 +127,7 @@ class _RegisterState extends State<Register> {
             ),
             Container(
               alignment: Alignment.center,
+              margin: const EdgeInsets.only(bottom: 40),
               child: TextButton(
                 onPressed: () {
                   Navigator.pushReplacement(

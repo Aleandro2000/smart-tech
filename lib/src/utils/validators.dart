@@ -6,12 +6,21 @@ String? requiredValidation(String text) {
   }
 }
 
-String? strongPasswordValidation(String text) {
-  RegExp regExp = RegExp(
+String? strongPasswordValidation(String password) {
+  if (!RegExp(
     r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
-  );
-  if (!regExp.hasMatch(text)) {
+  ).hasMatch(password)) {
     return "Weak password!";
+  } else {
+    return null;
+  }
+}
+
+String? emailValidator(String email) {
+  if (!RegExp(
+    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+  ).hasMatch(email)) {
+    return "Invalid email!";
   } else {
     return null;
   }

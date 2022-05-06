@@ -25,6 +25,17 @@ class _LoginState extends State<Login> {
             ),
             Container(
               alignment: Alignment.center,
+              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+              child: TextFormField(
+                validator: (value) => emailValidator(value!),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Email',
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
               margin: const EdgeInsets.fromLTRB(50, 0, 50, 12.5),
               child: TextFormField(
                 obscureText: true,

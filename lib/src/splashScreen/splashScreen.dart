@@ -15,11 +15,10 @@ class _SplashState extends State<Splash> {
     return SplashScreen(
       seconds: 3,
       navigateAfterSeconds: const Login(),
-      title: const Text("Smart Tech"),
+      loadingText: const Text(''),
       image: Image.asset("assets/chip.png"),
       backgroundColor: Colors.white,
-      styleTextUnderTheLoader: const TextStyle(),
-      photoSize: 100.0,
+      photoSize: 109.0,
       useLoader: false,
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
@@ -24,7 +26,9 @@ class MyApp extends StatelessWidget {
         future: _fbApp,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            print('The app has an error! ${snapshot.error.toString()}');
+            return Text(
+              'There is a problem in the app! ${snapshot.error.toString()}',
+            );
           } else if (snapshot.hasData) {
             return const Splash();
           }

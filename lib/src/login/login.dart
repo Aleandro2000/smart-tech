@@ -16,8 +16,8 @@ class _LoginState extends State<Login> {
   final email = TextEditingController();
   final password = TextEditingController();
 
-  void login(BuildContext context) {
-    var session = loginAuth(email.text, password.text);
+  void login(BuildContext context) async {
+    var session = await loginAuth(email.text, password.text);
     if (session) {
       Navigator.pushReplacement(
         context,

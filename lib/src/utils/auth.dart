@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-void registerAuth(String email, String password) {
+void registerAuth(String email, String password) async {
   if (email.isNotEmpty && password.isNotEmpty) {
-    FirebaseAuth.instance
+    await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
   }
 }
 
-bool loginAuth(String email, String password) {
+Future<bool> loginAuth(String email, String password) async {
   if (email.isNotEmpty && password.isNotEmpty) {
-    FirebaseAuth.instance
+    await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
     User? user = FirebaseAuth.instance.currentUser;
     return user != null;

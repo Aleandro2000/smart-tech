@@ -1,4 +1,4 @@
-package com.example.hard_and_soft_mobile
+package com.example.hard_and_soft
 
 import io.flutter.embedding.android.FlutterActivity
 

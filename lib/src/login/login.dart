@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/register/register.dart';
+import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class Login extends StatefulWidget {
@@ -11,6 +12,25 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  final email = TextEditingController();
+  final password = TextEditingController();
+
+  void login(BuildContext context) {
+    var session = loginAuth(email.text, password.text);
+    if (session) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Login()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to authenthicate :('),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +47,7 @@ class _LoginState extends State<Login> {
               alignment: Alignment.center,
               margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
               child: TextFormField(
+                controller: email,
                 validator: (value) => emailValidator(value!),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -41,6 +62,7 @@ class _LoginState extends State<Login> {
                 obscureText: true,
                 enableSuggestions: false,
                 autocorrect: false,
+                controller: password,
                 validator: (value) => requiredValidation(value!),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -61,6 +83,7 @@ class _LoginState extends State<Login> {
                           backgroundColor: Colors.green,
                         ),
                       );
+                      login(context);
                     }
                   },
                   child: const Text(

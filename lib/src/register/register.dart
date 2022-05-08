@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/legal/terms_of_use.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
+import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class Register extends StatefulWidget {
@@ -14,10 +15,21 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   bool termsOfUse = false;
 
+  final email = TextEditingController();
+  final password = TextEditingController();
+
   void check() {
     setState(() {
       termsOfUse = !termsOfUse;
     });
+  }
+
+  void register(BuildContext context) {
+    registerAuth(email.text, password.text);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Login()),
+    );
   }
 
   @override
@@ -108,14 +120,14 @@ class _RegisterState extends State<Register> {
                         ),
                       );
                     }
-                    if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate() && termsOfUse) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Processing Data'),
                           backgroundColor: Colors.green,
                         ),
                       );
-                      if (termsOfUse) {}
+                      register(context);
                     }
                   },
                   child: const Text(

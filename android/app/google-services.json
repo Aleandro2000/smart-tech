@@ -29,6 +29,13 @@
             {
               "client_id": "954782046444-g7g2d52l7mt8ttgd1logecegk7dpofvs.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "954782046444-9ccqaja7hdann838phe33viee9trihqh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hardAndSoftMobile"
+              }
             }
           ]
         }

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/dashboard/dashboard.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
@@ -20,7 +21,7 @@ class _LoginState extends State<Login> {
     if (session) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Login()),
+        MaterialPageRoute(builder: (context) => const Dashboard()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

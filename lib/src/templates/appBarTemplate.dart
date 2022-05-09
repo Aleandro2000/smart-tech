@@ -11,7 +11,7 @@ class AppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   State<AppBarTemplate> createState() => _AppBarTemplateState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(75);
 }
 
 class _AppBarTemplateState extends State<AppBarTemplate> {

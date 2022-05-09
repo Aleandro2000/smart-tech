@@ -23,11 +23,11 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       showSelectedLabels: true,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: "Home",
+          icon: Icon(Icons.dashboard),
+          label: "Dashboard",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.dashboard_outlined),
+          icon: Icon(Icons.speed),
           label: "Pannel",
         ),
         BottomNavigationBarItem(

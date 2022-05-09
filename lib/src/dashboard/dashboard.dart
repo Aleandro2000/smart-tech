@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/navigation/bottomNavigator.dart';
+import 'package:hard_and_soft_mobile/src/templates/appBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 
 class Dashboard extends StatefulWidget {
@@ -28,20 +29,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dashboard"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: GestureDetector(
-              onTap: () => logout(context),
-              child: const Icon(
-                Icons.logout,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: const AppBarTemplate(title: "Dashboard"),
       body: ListView(
         children: [],
       ),

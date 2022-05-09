@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
 
 Future<bool> checkIfEmailInUse(String emailAddress) async {
   try {
@@ -30,8 +29,6 @@ Future<bool> registerAuth(String email, String password) async {
       }
       return false;
     }
-    return false;
-  } on PlatformException {
     return false;
   } catch (err) {
     return false;
@@ -66,7 +63,7 @@ User? getSession(bool debugLog) {
 }
 
 void logoutAuth() async {
-  if (FirebaseAuth.instance.currentUser != null) {
+  if (getSession(false) != null) {
     await FirebaseAuth.instance.signOut();
   }
 }

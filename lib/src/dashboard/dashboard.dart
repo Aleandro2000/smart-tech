@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/dashboard/components/dashboardScreen.dart';
+import 'package:hard_and_soft_mobile/src/dashboard/components/pannelScreens.dart';
+import 'package:hard_and_soft_mobile/src/dashboard/components/settingsScreen.dart';
 import 'package:hard_and_soft_mobile/src/templates/appBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/routes.dart';
 
@@ -15,10 +17,10 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   late int _selectedIndex = widget.index;
 
-  final routes = [
+  final List<RouteJSON> routes = [
     RouteJSON(title: "Dashboard", screen: const DashboardScreen()),
-    RouteJSON(title: "Pannel", screen: const DashboardScreen()),
-    RouteJSON(title: "Settings", screen: const DashboardScreen()),
+    RouteJSON(title: "Pannel", screen: const PannelScreen()),
+    RouteJSON(title: "Settings", screen: const SettingsScreen()),
   ];
 
   void _onItemTapped(int index) {

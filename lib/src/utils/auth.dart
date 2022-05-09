@@ -32,6 +32,6 @@ User? getSession(bool debugLog) {
   return FirebaseAuth.instance.currentUser;
 }
 
-void logoutAuth() {
-  FirebaseAuth.instance.signOut();
+void logoutAuth() async {
+  await FirebaseAuth.instance.signOut();
 }

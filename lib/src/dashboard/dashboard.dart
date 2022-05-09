@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/login/login.dart';
+import 'package:hard_and_soft_mobile/src/navigation/bottomNavigator.dart';
+import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -8,8 +11,41 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  void logout(context) {
+    logoutAuth();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Login()),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Successfully logged out ;)'),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Dashboard"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: GestureDetector(
+              onTap: () => logout(context),
+              child: const Icon(
+                Icons.logout,
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [],
+      ),
+      bottomNavigationBar: const BottomNavigator(),
+    );
   }
 }

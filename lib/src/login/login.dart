@@ -23,6 +23,12 @@ class _LoginState extends State<Login> {
         context,
         MaterialPageRoute(builder: (context) => const Dashboard()),
       );
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Successfully logged in ;)'),
+          backgroundColor: Colors.green,
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

@@ -8,7 +8,13 @@ class BottomNavigator extends StatefulWidget {
 }
 
 class _BottomNavigatorState extends State<BottomNavigator> {
-  final int _selectedIndex = 0;
+  late int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         ),
       ],
       currentIndex: _selectedIndex,
-      onTap: null,
+      onTap: _onItemTapped,
     );
   }
 }

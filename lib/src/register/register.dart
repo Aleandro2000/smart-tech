@@ -24,12 +24,21 @@ class _RegisterState extends State<Register> {
     });
   }
 
-  void register(BuildContext context) {
-    registerAuth(email.text, password.text);
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Login()),
-    );
+  void register(BuildContext context) async {
+    bool success = await registerAuth(email.text, password.text);
+    if (success) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Login()),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Failed to register the user :('),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
   }
 
   @override
@@ -48,6 +57,7 @@ class _RegisterState extends State<Register> {
               margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
               child: TextFormField(
                 validator: (value) => emailValidator(value!),
+                controller: email,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Email',
@@ -62,6 +72,7 @@ class _RegisterState extends State<Register> {
                 enableSuggestions: false,
                 autocorrect: false,
                 validator: (value) => strongPasswordValidation(value!),
+                controller: password,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Password',

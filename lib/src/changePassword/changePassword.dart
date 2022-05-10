@@ -12,7 +12,7 @@ class _ChangePasswordState extends State<ChangePassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Change Email"),
+        title: const Text("Change Password"),
         centerTitle: true,
       ),
     );

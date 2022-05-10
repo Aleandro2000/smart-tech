@@ -20,6 +20,7 @@ Future<bool> registerAuth(String email, String password) async {
     if (email.isNotEmpty &&
         password.isNotEmpty &&
         !await checkIfEmailInUse(email)) {
+      logoutAuth();
       User? user = (await FirebaseAuth.instance
               .createUserWithEmailAndPassword(email: email, password: password))
           .user;
@@ -40,6 +41,7 @@ Future<bool> loginAuth(String email, String password) async {
     if (email.isNotEmpty &&
         password.isNotEmpty &&
         await checkIfEmailInUse(email)) {
+      logoutAuth();
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       User? user = FirebaseAuth.instance.currentUser;
@@ -88,10 +90,15 @@ Future<bool> changeEmailAuth() async {
   }
 }
 
-Future<bool> deleteAuth() async {
+Future<bool> deleteAuth(String password) async {
   try {
     User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
+    String? email = user?.email;
+    if (password.isNotEmpty && user != null && email!.isNotEmpty) {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      await user.reauthenticateWithCredential(credential);
       await user.delete();
       return true;
     }

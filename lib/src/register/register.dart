@@ -158,12 +158,10 @@ class _RegisterState extends State<Register> {
               alignment: Alignment.center,
               margin: const EdgeInsets.only(bottom: 40),
               child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login()),
-                  );
-                },
+                onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Login()),
+                ),
                 child: const Text(
                   "Do you have an account?",
                   style: TextStyle(fontSize: 18),

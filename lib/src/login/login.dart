@@ -104,12 +104,10 @@ class _LoginState extends State<Login> {
             Container(
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Register()),
-                  );
-                },
+                onPressed: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Register()),
+                ),
                 child: const Text(
                   "Don't you have an account?",
                   style: TextStyle(fontSize: 18),

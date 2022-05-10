@@ -37,11 +37,18 @@ Future<bool> registerAuth(String email, String password) async {
 
 Future<bool> loginAuth(String email, String password) async {
   try {
-    if (email.isNotEmpty && password.isNotEmpty) {
+    if (email.isNotEmpty &&
+        password.isNotEmpty &&
+        await checkIfEmailInUse(email)) {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       User? user = FirebaseAuth.instance.currentUser;
-      return user != null;
+      if (user != null && user.emailVerified) {
+        return true;
+      } else if (user != null && !user.emailVerified) {
+        FirebaseAuth.instance.signOut();
+      }
+      return false;
     }
     return false;
   } catch (err) {
@@ -49,21 +56,55 @@ Future<bool> loginAuth(String email, String password) async {
   }
 }
 
-User? getSession(bool debugLog) {
-  if (debugLog) {
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user == null) {
-        print('User is currently signed out!');
-      } else {
-        print('User is signed in!');
-      }
-    });
+void logoutAuth() {
+  if (FirebaseAuth.instance.currentUser != null) {
+    FirebaseAuth.instance.signOut();
   }
-  return FirebaseAuth.instance.currentUser;
 }
 
-void logoutAuth() {
-  if (getSession(false) != null) {
-    FirebaseAuth.instance.signOut();
+Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
+  try {
+    User? user = FirebaseAuth.instance.currentUser;
+    String? email = user?.email;
+    if (newPassword.isNotEmpty && user != null && email!.isNotEmpty) {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: oldPassword);
+
+      await user.reauthenticateWithCredential(credential);
+      await user.updatePassword(newPassword);
+      return true;
+    }
+    return false;
+  } catch (err) {
+    return false;
+  }
+}
+
+Future<bool> changeEmailAuth() async {
+  try {
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
+Future<bool> deleteAuth() async {
+  try {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      await user.delete();
+      return true;
+    }
+    return false;
+  } catch (err) {
+    return false;
+  }
+}
+
+Future<bool> forgotPasswordAuth(String email) async {
+  try {
+    return true;
+  } catch (err) {
+    return false;
   }
 }

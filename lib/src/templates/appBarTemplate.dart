@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/consts.dart';
 
 class AppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   final String title;
@@ -12,7 +11,7 @@ class AppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   State<AppBarTemplate> createState() => _AppBarTemplateState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(Dimensions.appBarHeight);
+  Size get preferredSize => const Size.fromHeight(75);
 }
 
 class _AppBarTemplateState extends State<AppBarTemplate> {

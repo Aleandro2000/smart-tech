@@ -8,7 +8,7 @@ class RouteJSON {
 
   factory RouteJSON.fromJSON(Map<String, dynamic> json) {
     return RouteJSON(
-      title: json['titlee'],
+      title: json['title'],
       screen: json['screen'],
     );
   }

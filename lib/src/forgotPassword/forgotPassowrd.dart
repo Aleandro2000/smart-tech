@@ -10,6 +10,12 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Forgot Password"),
+        toolbarHeight: 75,
+        centerTitle: true,
+      ),
+    );
   }
 }

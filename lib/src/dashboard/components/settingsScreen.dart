@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
 import 'package:hard_and_soft_mobile/src/deleteAccount/deleteAccount.dart';
+import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -35,6 +36,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ChangePassword()),
+          ),
+        ),
+        ListTile(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+          title: const Text("Forgot Password"),
+          leading: const Icon(Icons.person),
+          trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ForgotPassword()),
           ),
         ),
         ListTile(

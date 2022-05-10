@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/dashboard/components/dashboardScreen.dart';
 import 'package:hard_and_soft_mobile/src/dashboard/dashboard.dart';
+import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
@@ -98,6 +99,20 @@ class _LoginState extends State<Login> {
                     'LOGIN',
                     style: TextStyle(fontSize: 18),
                   ),
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: TextButton(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ForgotPassword()),
+                ),
+                child: const Text(
+                  "Forgot password?",
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
             ),

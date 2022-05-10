@@ -13,6 +13,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Delete Account"),
+        toolbarHeight: 75,
         centerTitle: true,
       ),
     );

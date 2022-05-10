@@ -13,6 +13,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Change Password"),
+        toolbarHeight: 75,
         centerTitle: true,
       ),
     );

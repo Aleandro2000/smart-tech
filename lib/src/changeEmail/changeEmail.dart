@@ -13,6 +13,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Change Email"),
+        toolbarHeight: 75,
         centerTitle: true,
       ),
     );

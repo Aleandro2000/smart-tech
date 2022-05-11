@@ -51,7 +51,7 @@ packages:
     source: hosted
     version: "0.12.0"
   charts_flutter:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: charts_flutter
       url: "https://pub.dartlang.org"
@@ -71,13 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
-  convert:
-    dependency: transitive
-    description:
-      name: convert
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
   crypto:
     dependency: transitive
     description:
@@ -92,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  d_chart:
+    dependency: "direct main"
+    description:
+      name: d_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   easy_pdf_viewer:
     dependency: "direct main"
     description:
@@ -162,13 +162,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.3"
-  fixnum:
-    dependency: transitive
+  fluetooth:
+    dependency: "direct main"
     description:
-      name: fixnum
+      name: fluetooth
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.11"
+    version: "0.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -181,13 +181,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
-  flutter_blue:
-    dependency: "direct main"
-    description:
-      name: flutter_blue
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.0"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -408,13 +401,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-  protobuf:
-    dependency: transitive
-    description:
-      name: protobuf
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.8"
   rxdart:
     dependency: transitive
     description:

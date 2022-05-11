@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                     }
                   },
                   child: const Text(
-                    'LOGIN',
+                    'Login',
                     style: TextStyle(fontSize: 18),
                   ),
                 ),

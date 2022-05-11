@@ -54,7 +54,8 @@ class _DeleteAccountState extends State<DeleteAccount> {
               child: const Image(image: AssetImage('assets/logo.png')),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 50),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(vertical: 25),
               child: const Text(
                 "Are you sure you want to delete this account? This process is not reversible!",
                 textAlign: TextAlign.center,
@@ -65,7 +66,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
             ),
             Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+              margin: const EdgeInsets.fromLTRB(50, 0, 50, 50),
               child: TextFormField(
                 obscureText: true,
                 enableSuggestions: false,
@@ -79,7 +80,17 @@ class _DeleteAccountState extends State<DeleteAccount> {
               ),
             ),
             TextButton(
-              onPressed: () => delete(context),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Processing Data'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                  delete(context);
+                }
+              },
               child: const Text("Yes, I want to delete this account!"),
               style: TextButton.styleFrom(
                 textStyle: const TextStyle(fontSize: 18),
@@ -87,6 +98,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
               ),
             ),
             Container(
+              alignment: Alignment.center,
               margin: const EdgeInsets.only(bottom: 75),
               child: TextButton(
                 onPressed: () => Navigator.pop(context),

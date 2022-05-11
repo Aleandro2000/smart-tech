@@ -1,3 +1,5 @@
+// ignore_for_file: control_flow_in_finally
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future<bool> checkIfEmailInUse(String emailAddress) async {
@@ -10,8 +12,8 @@ Future<bool> checkIfEmailInUse(String emailAddress) async {
     } else {
       return false;
     }
-  } catch (error) {
-    return true;
+  } finally {
+    return false;
   }
 }
 
@@ -31,7 +33,7 @@ Future<bool> registerAuth(String email, String password) async {
       return false;
     }
     return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }
@@ -54,9 +56,7 @@ Future<bool> loginAuth(String email, String password) async {
       return false;
     }
     return false;
-  } on FirebaseAuthException {
-    return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }
@@ -83,9 +83,7 @@ Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
       return false;
     }
     return false;
-  } on FirebaseAuthException {
-    return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }
@@ -111,9 +109,7 @@ Future<bool> changeEmailAuth(String newEmail, String password) async {
       return false;
     }
     return true;
-  } on FirebaseAuthException {
-    return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }
@@ -135,9 +131,7 @@ Future<bool> deleteAuth(String password) async {
       return false;
     }
     return false;
-  } on FirebaseAuthException {
-    return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }
@@ -149,7 +143,7 @@ Future<bool> forgotPasswordAuth(String email) async {
       return true;
     }
     return false;
-  } catch (err) {
+  } finally {
     return false;
   }
 }

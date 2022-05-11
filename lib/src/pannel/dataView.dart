@@ -20,7 +20,7 @@ class _DataViewState extends State<DataView> {
       body: ListView(
         children: [
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 50),
+            margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 12.5),
             child: const Text("TO DO!"),
           )
         ],

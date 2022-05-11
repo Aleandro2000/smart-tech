@@ -36,7 +36,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
           elevation: 8,
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
         ),
       ],
     );

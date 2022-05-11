@@ -17,6 +17,7 @@ class _RegisterState extends State<Register> {
 
   final email = TextEditingController();
   final password = TextEditingController();
+  final confirmPassword = TextEditingController();
 
   void check() {
     setState(() {
@@ -25,22 +26,32 @@ class _RegisterState extends State<Register> {
   }
 
   void register(BuildContext context) async {
-    bool success = await registerAuth(email.text, password.text);
-    if (success) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Login()),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('A email verification link has been sent'),
-          backgroundColor: Colors.green,
-        ),
-      );
+    if (password.text == confirmPassword.text) {
+      bool success = await registerAuth(email.text.trim(), password.text);
+      if (success) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Login()),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('A email verification link has been sent'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to register the user :('),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Failed to register the user :('),
+          content:
+              Text('Password and confirmation password has to be the same'),
           backgroundColor: Colors.green,
         ),
       );
@@ -82,6 +93,21 @@ class _RegisterState extends State<Register> {
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Password',
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+              child: TextFormField(
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                validator: (value) => requiredValidation(value!),
+                controller: confirmPassword,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Confirm Password',
                 ),
               ),
             ),

@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   final password = TextEditingController();
 
   void login(BuildContext context) async {
-    bool session = await loginAuth(email.text, password.text);
+    bool session = await loginAuth(email.text.trim(), password.text);
     if (session) {
       Navigator.pushReplacement(
         context,

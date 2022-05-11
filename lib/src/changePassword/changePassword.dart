@@ -40,7 +40,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content:
-              Text('Password and confirmation password have to be the same'),
+              Text('Password and confirmation password has to be the same'),
           backgroundColor: Colors.green,
         ),
       );

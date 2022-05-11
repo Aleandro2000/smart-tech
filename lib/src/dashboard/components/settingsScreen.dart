@@ -13,23 +13,44 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   void forgotPassword() async {
-    bool success = await forgotPasswordAuth(getEmailCurrentUser()!);
-    if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content:
-              Text('A recover link has been sent to ${getEmailCurrentUser()}'),
-          backgroundColor: Colors.green,
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Recover account failed :('),
-          backgroundColor: Colors.green,
-        ),
-      );
-    }
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("Forgot Password"),
+            content: const Text("Are you sure you want to continue?"),
+            actions: [
+              TextButton(
+                  onPressed: () async {
+                    bool success =
+                        await forgotPasswordAuth(getEmailCurrentUser()!);
+                    if (success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                              'A recover link has been sent to ${getEmailCurrentUser()}'),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Recover account failed :('),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                    }
+                    Navigator.pop(context);
+                  },
+                  child: const Text("YES")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("NO")),
+            ],
+          );
+        });
   }
 
   @override

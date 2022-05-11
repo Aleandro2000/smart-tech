@@ -16,7 +16,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
   final password = TextEditingController();
 
   void onSubmit(BuildContext context) async {
-    bool success = await changeEmailAuth(newEmail.text, password.text);
+    bool success = await changeEmailAuth(newEmail.text.trim(), password.text);
     if (success) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const Login()),

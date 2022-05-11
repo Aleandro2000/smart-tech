@@ -34,8 +34,9 @@ class _RegisterState extends State<Register> {
           MaterialPageRoute(builder: (context) => const Login()),
         );
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('A email verification link has been sent'),
+          SnackBar(
+            content: Text(
+                'A email verification link has been sent to ${email.text.trim()}'),
             backgroundColor: Colors.green,
           ),
         );

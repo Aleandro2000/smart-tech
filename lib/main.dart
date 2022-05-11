@@ -1,4 +1,4 @@
-// @dart=2.11
+// @dart=2.16
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/rendering.dart';
@@ -10,7 +10,7 @@ import 'package:hard_and_soft_mobile/src/splashScreen/splashScreen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  RendererBinding.instance.setSemanticsEnabled(true);
+  RendererBinding.instance?.setSemanticsEnabled(true);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

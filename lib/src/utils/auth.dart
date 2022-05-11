@@ -1,5 +1,3 @@
-// ignore_for_file: control_flow_in_finally
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 Future<bool> checkIfEmailInUse(String emailAddress) async {
@@ -12,7 +10,7 @@ Future<bool> checkIfEmailInUse(String emailAddress) async {
     } else {
       return false;
     }
-  } finally {
+  } catch (err) {
     return false;
   }
 }
@@ -33,7 +31,7 @@ Future<bool> registerAuth(String email, String password) async {
       return false;
     }
     return false;
-  } finally {
+  } catch (err) {
     return false;
   }
 }
@@ -44,9 +42,11 @@ Future<bool> loginAuth(String email, String password) async {
         password.isNotEmpty &&
         await checkIfEmailInUse(email)) {
       logoutAuth();
-      User? user = (await FirebaseAuth.instance
-              .signInWithEmailAndPassword(email: email, password: password))
-          .user;
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((value) => null);
+
+      User? user = FirebaseAuth.instance.currentUser;
 
       if (user != null && user.emailVerified) {
         return true;
@@ -56,7 +56,12 @@ Future<bool> loginAuth(String email, String password) async {
       return false;
     }
     return false;
-  } finally {
+  } on FirebaseAuthException catch (e) {
+    if (e.code.isNotEmpty) {
+      return false;
+    }
+    return true;
+  } catch (err) {
     return false;
   }
 }
@@ -74,7 +79,9 @@ Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
     if (newPassword.isNotEmpty && user != null && email!.isNotEmpty) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: oldPassword);
-      user = (await user.reauthenticateWithCredential(credential)).user;
+      await user.reauthenticateWithCredential(credential).then((value) => null);
+
+      user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
         await user.updatePassword(newPassword);
@@ -83,7 +90,7 @@ Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
       return false;
     }
     return false;
-  } finally {
+  } catch (err) {
     return false;
   }
 }
@@ -99,7 +106,9 @@ Future<bool> changeEmailAuth(String newEmail, String password) async {
         !await checkIfEmailInUse(newEmail)) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: password);
-      user = (await user.reauthenticateWithCredential(credential)).user;
+      await user.reauthenticateWithCredential(credential).then((value) => null);
+
+      user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
         await user.verifyBeforeUpdateEmail(newEmail);
@@ -109,7 +118,7 @@ Future<bool> changeEmailAuth(String newEmail, String password) async {
       return false;
     }
     return true;
-  } finally {
+  } catch (err) {
     return false;
   }
 }
@@ -121,7 +130,9 @@ Future<bool> deleteAuth(String password) async {
     if (password.isNotEmpty && user != null && email!.isNotEmpty) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: password);
-      user = (await user.reauthenticateWithCredential(credential)).user;
+      await user.reauthenticateWithCredential(credential).then((value) => null);
+
+      user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
         await user.delete();
@@ -131,7 +142,7 @@ Future<bool> deleteAuth(String password) async {
       return false;
     }
     return false;
-  } finally {
+  } catch (err) {
     return false;
   }
 }
@@ -143,9 +154,13 @@ Future<bool> forgotPasswordAuth(String email) async {
       return true;
     }
     return false;
-  } finally {
+  } catch (err) {
     return false;
   }
+}
+
+bool checkSession() {
+  return FirebaseAuth.instance.currentUser != null;
 }
 
 String? getEmailCurrentUser() {

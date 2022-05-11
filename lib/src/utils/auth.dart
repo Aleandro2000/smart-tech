@@ -49,7 +49,7 @@ Future<bool> loginAuth(String email, String password) async {
       if (user != null && user.emailVerified) {
         return true;
       } else if (user != null && !user.emailVerified) {
-        FirebaseAuth.instance.signOut();
+        logoutAuth();
       }
       return false;
     }
@@ -105,6 +105,7 @@ Future<bool> changeEmailAuth(String newEmail, String password) async {
 
       if (user != null) {
         await user.verifyBeforeUpdateEmail(newEmail);
+        logoutAuth();
         return true;
       }
       return false;
@@ -150,4 +151,8 @@ Future<bool> forgotPasswordAuth(String email) async {
   } catch (err) {
     return false;
   }
+}
+
+String? getEmailCurrentUser() {
+  return FirebaseAuth.instance.currentUser?.email;
 }

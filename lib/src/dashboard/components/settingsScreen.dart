@@ -3,6 +3,7 @@ import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
 import 'package:hard_and_soft_mobile/src/deleteAccount/deleteAccount.dart';
 import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
+import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -12,6 +13,26 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  void forgotPassword() async {
+    bool success = await forgotPasswordAuth(getEmailCurrentUser()!);
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('A recover link has been sent to ${getEmailCurrentUser()}'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Recover account failed :('),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -100,10 +121,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text("Forgot Password"),
             leading: const Icon(Icons.person),
             trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ForgotPassword()),
-            ),
+            onTap: () => forgotPassword(),
           ),
         ),
         Container(

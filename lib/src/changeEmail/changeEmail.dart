@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
@@ -17,7 +18,10 @@ class _ChangeEmailState extends State<ChangeEmail> {
   void onSubmit(BuildContext context) async {
     bool success = await changeEmailAuth(newEmail.text, password.text);
     if (success) {
-      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Login()),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content:

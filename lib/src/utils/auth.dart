@@ -42,9 +42,10 @@ Future<bool> loginAuth(String email, String password) async {
         password.isNotEmpty &&
         await checkIfEmailInUse(email)) {
       logoutAuth();
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-      User? user = FirebaseAuth.instance.currentUser;
+      User? user = (await FirebaseAuth.instance
+              .signInWithEmailAndPassword(email: email, password: password))
+          .user;
+
       if (user != null && user.emailVerified) {
         return true;
       } else if (user != null && !user.emailVerified) {
@@ -52,6 +53,8 @@ Future<bool> loginAuth(String email, String password) async {
       }
       return false;
     }
+    return false;
+  } on FirebaseAuthException {
     return false;
   } catch (err) {
     return false;
@@ -71,11 +74,16 @@ Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
     if (newPassword.isNotEmpty && user != null && email!.isNotEmpty) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: oldPassword);
+      user = (await user.reauthenticateWithCredential(credential)).user;
 
-      await user.reauthenticateWithCredential(credential);
-      await user.updatePassword(newPassword);
-      return true;
+      if (user != null) {
+        await user.updatePassword(newPassword);
+        return true;
+      }
+      return false;
     }
+    return false;
+  } on FirebaseAuthException {
     return false;
   } catch (err) {
     return false;
@@ -89,15 +97,21 @@ Future<bool> changeEmailAuth(String newEmail, String password) async {
     if (password.isNotEmpty &&
         user != null &&
         email!.isNotEmpty &&
-        newEmail.isNotEmpty) {
+        newEmail.isNotEmpty &&
+        !await checkIfEmailInUse(newEmail)) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: password);
+      user = (await user.reauthenticateWithCredential(credential)).user;
 
-      await user.reauthenticateWithCredential(credential);
-      await user.updateEmail(newEmail);
-      return true;
+      if (user != null) {
+        await user.verifyBeforeUpdateEmail(newEmail);
+        return true;
+      }
+      return false;
     }
     return true;
+  } on FirebaseAuthException {
+    return false;
   } catch (err) {
     return false;
   }
@@ -110,11 +124,16 @@ Future<bool> deleteAuth(String password) async {
     if (password.isNotEmpty && user != null && email!.isNotEmpty) {
       AuthCredential credential =
           EmailAuthProvider.credential(email: email, password: password);
+      user = (await user.reauthenticateWithCredential(credential)).user;
 
-      await user.reauthenticateWithCredential(credential);
-      await user.delete();
-      return true;
+      if (user != null) {
+        await user.delete();
+        return true;
+      }
+      return false;
     }
+    return false;
+  } on FirebaseAuthException {
     return false;
   } catch (err) {
     return false;

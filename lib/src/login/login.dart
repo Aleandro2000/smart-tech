@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:hard_and_soft_mobile/src/dashboard/components/dashboardScreen.dart';
 import 'package:hard_and_soft_mobile/src/dashboard/dashboard.dart';
 import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
@@ -118,6 +117,7 @@ class _LoginState extends State<Login> {
             ),
             Container(
               alignment: Alignment.center,
+              margin: const EdgeInsets.only(bottom: 40),
               child: TextButton(
                 onPressed: () => Navigator.pushReplacement(
                   context,

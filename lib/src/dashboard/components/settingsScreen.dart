@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
 import 'package:hard_and_soft_mobile/src/deleteAccount/deleteAccount.dart';
-import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 
 class SettingsScreen extends StatefulWidget {

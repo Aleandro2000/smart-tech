@@ -17,10 +17,9 @@ class _DeleteAccountState extends State<DeleteAccount> {
   void delete(BuildContext context) async {
     bool success = await deleteAuth(password.text);
     if (success) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Login()),
-      );
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const Login()),
+          (route) => false);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Successfully deleted account ;)'),

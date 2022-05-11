@@ -18,10 +18,9 @@ class _ChangeEmailState extends State<ChangeEmail> {
   void onSubmit(BuildContext context) async {
     bool success = await changeEmailAuth(newEmail.text, password.text);
     if (success) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const Login()),
-      );
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const Login()),
+          (route) => false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content:

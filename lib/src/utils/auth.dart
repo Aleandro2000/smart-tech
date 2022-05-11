@@ -129,6 +129,7 @@ Future<bool> deleteAuth(String password) async {
 
       if (user != null) {
         await user.delete();
+        logoutAuth();
         return true;
       }
       return false;

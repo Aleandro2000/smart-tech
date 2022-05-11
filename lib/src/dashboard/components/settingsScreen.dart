@@ -119,7 +119,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
             title: const Text("Forgot Password"),
-            leading: const Icon(Icons.person),
+            leading: const Icon(Icons.question_mark),
             trailing: const Icon(Icons.keyboard_arrow_right_sharp),
             onTap: () => forgotPassword(),
           ),

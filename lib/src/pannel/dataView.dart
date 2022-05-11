@@ -1,3 +1,5 @@
+//TO DO
+
 import "package:flutter/material.dart";
 
 class DataView extends StatefulWidget {
@@ -14,6 +16,14 @@ class _DataViewState extends State<DataView> {
       appBar: AppBar(
         title: const Text("Data View"),
         centerTitle: true,
+      ),
+      body: ListView(
+        children: [
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 50),
+            child: const Text("TO DO!"),
+          )
+        ],
       ),
     );
   }

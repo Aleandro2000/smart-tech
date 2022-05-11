@@ -82,8 +82,21 @@ Future<bool> changePasswordAuth(String oldPassword, String newPassword) async {
   }
 }
 
-Future<bool> changeEmailAuth() async {
+Future<bool> changeEmailAuth(String newEmail, String password) async {
   try {
+    User? user = FirebaseAuth.instance.currentUser;
+    String? email = user?.email;
+    if (password.isNotEmpty &&
+        user != null &&
+        email!.isNotEmpty &&
+        newEmail.isNotEmpty) {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      await user.reauthenticateWithCredential(credential);
+      await user.updateEmail(newEmail);
+      return true;
+    }
     return true;
   } catch (err) {
     return false;
@@ -110,7 +123,11 @@ Future<bool> deleteAuth(String password) async {
 
 Future<bool> forgotPasswordAuth(String email) async {
   try {
-    return true;
+    if (email.isNotEmpty && await checkIfEmailInUse(email)) {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return true;
+    }
+    return false;
   } catch (err) {
     return false;
   }

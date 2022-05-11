@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
@@ -32,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
@@ -62,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
@@ -92,7 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),
@@ -122,7 +120,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
+                offset: const Offset(0, 3), // changes position of shadow
               ),
             ],
           ),

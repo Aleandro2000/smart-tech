@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
@@ -24,12 +25,16 @@ class _DashboardAppBarTemplateState extends State<DashboardAppBarTemplate> {
       context,
       MaterialPageRoute(builder: (context) => const Login()),
     );
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Successfully logged out ;)'),
-        backgroundColor: ThemeColors.snackBarTheme,
-      ),
-    );
+    Flushbar(
+      borderRadius: const BorderRadius.all(Radius.circular(16)),
+      padding: const EdgeInsets.all(24),
+      margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
+      flushbarPosition: FlushbarPosition.TOP,
+      backgroundColor: Colors.green.withOpacity(0.9),
+      title: "LOGOUT MESSAGE!",
+      message: "Successfully logged out! ;)",
+      duration: const Duration(seconds: 3),
+    ).show(context);
   }
 
   @override

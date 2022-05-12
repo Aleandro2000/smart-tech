@@ -42,6 +42,8 @@ class _DashboardAppBarTemplateState extends State<DashboardAppBarTemplate> {
         child: Image(image: AssetImage('assets/app_bar_logo.png')),
       ),
       centerTitle: true,
+      shadowColor: Colors.black,
+      elevation: 10,
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 20),

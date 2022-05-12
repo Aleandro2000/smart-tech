@@ -24,30 +24,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 semanticsLabel: "Robot Arm Image",
               ),
             ),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: DChartLine(
-                    data: const [
-                      {
-                        'id': 'Line',
-                        'data': [
-                          {'domain': 0, 'measure': 2.5},
-                          {'domain': 2, 'measure': 4},
-                          {'domain': 3, 'measure': 6},
-                          {'domain': 4, 'measure': 1},
-                        ],
-                      },
-                    ],
-                    includePoints: true,
-                    lineColor: (lineData, index, id) => Colors.green,
-                  ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: DChartLine(
+                  data: const [
+                    {
+                      'id': 'Line',
+                      'data': [
+                        {'domain': 0, 'measure': 2.5},
+                        {'domain': 2, 'measure': 4},
+                        {'domain': 3, 'measure': 6},
+                        {'domain': 4, 'measure': 1},
+                      ],
+                    },
+                  ],
+                  includePoints: true,
+                  lineColor: (lineData, index, id) => Colors.green,
                 ),
               ),
-              elevation: 8,
-              margin: const EdgeInsets.all(20),
             ),
           ],
         ),

@@ -40,40 +40,30 @@ class _DashboardState extends State<Dashboard> {
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
         ),
-        child: Container(
-          decoration: const BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.black,
-                blurRadius: 10,
-              ),
-            ],
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.shifting, // Shifting
-            selectedItemColor: ThemeColors.selectedNavbarItem,
-            unselectedItemColor: ThemeColors.unselectedNavbarItem,
-            elevation: 10,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard),
-                label: "Dashboard",
-                backgroundColor: ThemeColors.backgroundNavbarTheme,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.speed),
-                label: "Pannel",
-                backgroundColor: ThemeColors.backgroundNavbarTheme,
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: "Settings",
-                backgroundColor: ThemeColors.backgroundNavbarTheme,
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting, // Shifting
+          selectedItemColor: ThemeColors.selectedNavbarItem,
+          unselectedItemColor: ThemeColors.unselectedNavbarItem,
+          elevation: 10,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              label: "Dashboard",
+              backgroundColor: ThemeColors.backgroundNavbarTheme,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.speed),
+              label: "Pannel",
+              backgroundColor: ThemeColors.backgroundNavbarTheme,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: "Settings",
+              backgroundColor: ThemeColors.backgroundNavbarTheme,
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
         ),
       ),
     );

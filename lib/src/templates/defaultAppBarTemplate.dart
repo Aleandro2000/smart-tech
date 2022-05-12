@@ -37,6 +37,8 @@ class _DefaultAppBarTemplateState extends State<DefaultAppBarTemplate> {
       title: Text(widget.title),
       toolbarHeight: 75,
       centerTitle: true,
+      shadowColor: Colors.black,
+      elevation: 10,
       actions: const [
         Padding(
           padding: EdgeInsets.zero,

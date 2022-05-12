@@ -31,7 +31,7 @@ class _DashboardAppBarTemplateState extends State<DashboardAppBarTemplate> {
       margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
       flushbarPosition: FlushbarPosition.TOP,
       backgroundColor: ThemeColors.flusBarItemColor,
-      title: "LOGOUT MESSAGE!",
+      title: "SIGN OUT MESSAGE!",
       message: "Successfully logged out! ;)",
       duration: const Duration(seconds: 3),
     ).show(context);

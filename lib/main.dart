@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: ThemeColors.primarySwatchTheme,
         scaffoldBackgroundColor: Colors.white,
-        en
       ),
       home: const Splash(),
       routes: {

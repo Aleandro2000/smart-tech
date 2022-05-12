@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 
 class VoiceCommands extends StatefulWidget {
   const VoiceCommands({Key? key}) : super(key: key);
@@ -11,10 +12,8 @@ class _VoiceCommandsState extends State<VoiceCommands> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Voice Commands"),
-        centerTitle: true,
-        toolbarHeight: 75,
+      appBar: const DefaultAppBarTemplate(
+        title: "Voice Commands",
       ),
       body: ListView(
         children: [

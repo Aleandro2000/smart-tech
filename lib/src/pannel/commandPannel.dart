@@ -1,6 +1,7 @@
 //TO DO
 
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class CommandPannel extends StatefulWidget {
@@ -17,10 +18,8 @@ class _CommandPannelState extends State<CommandPannel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Command Pannel"),
-        centerTitle: true,
-        toolbarHeight: 75,
+      appBar: const DefaultAppBarTemplate(
+        title: "Command Pannel",
       ),
       body: Form(
           key: _formKey,

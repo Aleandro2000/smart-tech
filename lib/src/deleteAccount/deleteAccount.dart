@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
@@ -40,10 +41,8 @@ class _DeleteAccountState extends State<DeleteAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Delete Account"),
-        toolbarHeight: 75,
-        centerTitle: true,
+      appBar: const DefaultAppBarTemplate(
+        title: "Delete Account",
       ),
       body: Form(
         key: _formKey,

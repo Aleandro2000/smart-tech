@@ -19,7 +19,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 12.5),
               alignment: Alignment.center,
-              child: SvgPicture.asset('assets/iot.svg'),
+              child: SvgPicture.asset(
+                'assets/iot.svg',
+                semanticsLabel: "Robot Arm Image",
+              ),
             ),
             Card(
               child: Padding(

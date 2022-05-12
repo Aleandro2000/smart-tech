@@ -1,6 +1,7 @@
 //TO DO
 
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 
 class DataView extends StatefulWidget {
   const DataView({Key? key}) : super(key: key);
@@ -13,10 +14,8 @@ class _DataViewState extends State<DataView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Data View"),
-        centerTitle: true,
-        toolbarHeight: 75,
+      appBar: const DefaultAppBarTemplate(
+        title: "Data View",
       ),
       body: ListView(
         children: [

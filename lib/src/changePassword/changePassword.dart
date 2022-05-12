@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
@@ -51,10 +52,8 @@ class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Change Password"),
-        toolbarHeight: 75,
-        centerTitle: true,
+      appBar: const DefaultAppBarTemplate(
+        title: "Change Password",
       ),
       body: Form(
         key: _formKey,

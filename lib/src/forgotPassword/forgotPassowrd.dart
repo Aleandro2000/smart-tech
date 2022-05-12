@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
@@ -37,10 +39,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Change Email"),
-        toolbarHeight: 75,
-        centerTitle: true,
+      appBar: const DefaultAppBarTemplate(
+        title: "Forgot Password",
       ),
       body: Form(
         key: _formKey,
@@ -50,7 +50,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Image(image: AssetImage('assets/logo.png')),
+                  child: SvgPicture.asset(
+                    "assets/forgot.svg",
+                    semanticsLabel: "Person who forgot a password image",
+                  ),
                 ),
                 Container(
                   constraints: const BoxConstraints(
@@ -63,7 +66,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     validator: (value) => emailValidator(value!),
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'New Email Address',
+                      hintText: 'Email Address',
                     ),
                   ),
                 ),

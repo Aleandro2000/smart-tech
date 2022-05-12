@@ -86,6 +86,9 @@ flutter:
     - assets/terms-of-use.pdf
     - assets/chip.png
     - assets/iot.svg
+    - assets/forgot.svg
+    - assets/meditation.svg
+    - assets/security.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

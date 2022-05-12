@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import 'package:d_chart/d_chart.dart';
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 
 class Charts extends StatefulWidget {
   const Charts({Key? key}) : super(key: key);
@@ -14,10 +15,8 @@ class _ChartsState extends State<Charts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Charts"),
-        centerTitle: true,
-        toolbarHeight: 75,
+      appBar: const DefaultAppBarTemplate(
+        title: "Charts",
       ),
       body: ListView(
         children: [

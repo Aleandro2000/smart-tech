@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/dashboard/components/dashboardScreen.dart';
 import 'package:hard_and_soft_mobile/src/dashboard/components/pannelScreens.dart';
 import 'package:hard_and_soft_mobile/src/dashboard/components/settingsScreen.dart';
-import 'package:hard_and_soft_mobile/src/templates/appBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/templates/dashboardAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/routes.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
@@ -33,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTemplate(title: routes[_selectedIndex].title!),
+      appBar: DashboardAppBarTemplate(title: routes[_selectedIndex].title!),
       body: routes[_selectedIndex].screen,
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(

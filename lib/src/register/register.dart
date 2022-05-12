@@ -71,7 +71,10 @@ class _RegisterState extends State<Register> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Image(image: AssetImage('assets/logo.png')),
+                  child: const Image(
+                    image: AssetImage('assets/logo.png'),
+                    semanticLabel: "Smart Tech Logo",
+                  ),
                 ),
                 Container(
                   constraints: const BoxConstraints(

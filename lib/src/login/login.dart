@@ -51,7 +51,10 @@ class _LoginState extends State<Login> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Image(image: AssetImage('assets/logo.png')),
+                  child: const Image(
+                    image: AssetImage('assets/logo.png'),
+                    semanticLabel: "Smart Tech Logo",
+                  ),
                 ),
                 Container(
                   constraints: const BoxConstraints(

@@ -3,19 +3,20 @@ import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
-class AppBarTemplate extends StatefulWidget with PreferredSizeWidget {
+class DefaultAppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   final String title;
 
-  const AppBarTemplate({Key? key, required this.title}) : super(key: key);
+  const DefaultAppBarTemplate({Key? key, required this.title})
+      : super(key: key);
 
   @override
-  State<AppBarTemplate> createState() => _AppBarTemplateState();
+  State<DefaultAppBarTemplate> createState() => _DefaultAppBarTemplateState();
 
   @override
   Size get preferredSize => const Size.fromHeight(75);
 }
 
-class _AppBarTemplateState extends State<AppBarTemplate> {
+class _DefaultAppBarTemplateState extends State<DefaultAppBarTemplate> {
   void logout(context) {
     logoutAuth();
     Navigator.pushReplacement(
@@ -35,20 +36,11 @@ class _AppBarTemplateState extends State<AppBarTemplate> {
     return AppBar(
       title: Text(widget.title),
       toolbarHeight: 75,
-      leading: const Padding(
-        padding: EdgeInsets.zero,
-        child: Image(image: AssetImage('assets/app_bar_logo.png')),
-      ),
       centerTitle: true,
-      actions: [
+      actions: const [
         Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: GestureDetector(
-            onTap: () => logout(context),
-            child: const Icon(
-              Icons.logout,
-            ),
-          ),
+          padding: EdgeInsets.zero,
+          child: Image(image: AssetImage('assets/app_bar_logo.png')),
         ),
       ],
     );

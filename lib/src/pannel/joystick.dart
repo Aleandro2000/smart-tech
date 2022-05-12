@@ -11,8 +11,6 @@ class Joystick extends StatefulWidget {
 }
 
 class _JoystickState extends State<Joystick> {
-  final JoystickMode _joystickMode = JoystickMode.all;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +19,10 @@ class _JoystickState extends State<Joystick> {
         centerTitle: true,
         toolbarHeight: 75,
       ),
-      body: Container(
-        margin: const EdgeInsets.only(bottom: 25),
-        child: JoystickArea(
-          mode: _joystickMode,
-          listener: (details) {},
-        ),
+      body: JoystickArea(
+        initialJoystickAlignment: Alignment.center,
+        mode: JoystickMode.all,
+        listener: (details) {},
       ),
     );
   }

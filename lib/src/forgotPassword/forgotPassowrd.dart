@@ -38,7 +38,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
         flushbarPosition: FlushbarPosition.TOP,
         backgroundColor: ThemeColors.flusBarItemColor,
-        title: "PROBLEM FORE RECOVERING!",
+        title: "PROBLEM FOR RECOVERING!",
         message: "Something is wrong! :(",
         duration: const Duration(seconds: 3),
       ).show(context);

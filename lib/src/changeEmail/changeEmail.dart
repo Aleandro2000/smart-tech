@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
@@ -23,20 +24,27 @@ class _ChangeEmailState extends State<ChangeEmail> {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const Login()),
           (route) => false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content:
-              Text('A verification link has been sent to ${newEmail.text}'),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "LINK SENT SUCCESSFULLY!",
+        message: 'A verification link has been sent to ${newEmail.text}',
+        duration: const Duration(seconds: 3),
+      ).show(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Email changing failed :('),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "CHANGING EMAIL FAILED!",
+        message: "Error to change email! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 
@@ -100,12 +108,6 @@ class _ChangeEmailState extends State<ChangeEmail> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing Data'),
-                              backgroundColor: ThemeColors.snackBarTheme,
-                            ),
-                          );
                           onSubmit(context);
                         }
                       },

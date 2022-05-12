@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
@@ -20,19 +21,27 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     bool success = await forgotPasswordAuth(email.text);
     if (success) {
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('A recover link has been sent to ${email.text}'),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "RECOVER ACCOUNT!",
+        message: 'A recover link has been sent to ${email.text}',
+        duration: const Duration(seconds: 3),
+      ).show(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Recover account failed :('),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "PROBLEM FORE RECOVERING!",
+        message: "Something is wrong! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 

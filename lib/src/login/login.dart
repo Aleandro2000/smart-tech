@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/dashboard/dashboard.dart';
 import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
@@ -24,19 +25,28 @@ class _LoginState extends State<Login> {
         context,
         MaterialPageRoute(builder: (context) => const Dashboard(index: 0)),
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Successfully logged in ;)'),
-          backgroundColor: Colors.green,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "AUTH SUCCEDED!",
+        message: "Successfully loggged in! ;)",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Failed to authenthicate :('),
-          backgroundColor: Colors.green,
-        ),
-      );
+      ScaffoldMessenger.of(context).activate();
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "AUTH FAILED!",
+        message: "Error to login! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 
@@ -96,12 +106,6 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing Data'),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
                           login(context);
                         }
                       },

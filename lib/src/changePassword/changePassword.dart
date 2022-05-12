@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
@@ -24,28 +25,37 @@ class _ChangePasswordState extends State<ChangePassword> {
 
       if (success) {
         Navigator.pop(context);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Successfully changed password ;)'),
-            backgroundColor: ThemeColors.snackBarTheme,
-          ),
-        );
+        Flushbar(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          padding: const EdgeInsets.all(24),
+          margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.green.withOpacity(0.9),
+          title: "PASSWORD CHANGED!",
+          message: "Successfully changed password! ;)",
+          duration: const Duration(seconds: 3),
+        ).show(context);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Changing password failed :('),
-            backgroundColor: ThemeColors.snackBarTheme,
-          ),
-        );
+        Flushbar(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          padding: const EdgeInsets.all(24),
+          margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.green.withOpacity(0.9),
+          title: "CHANGING PASSWORD FAILED!",
+          message: "Error to change password! :(",
+          duration: const Duration(seconds: 3),
+        ).show(context);
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Password and confirmation password has to be the same'),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        isDismissible: true,
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green,
+        title: "CHANGING PASSWORD FAILED!",
+        message: "Error to change password! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 
@@ -124,12 +134,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing Data'),
-                              backgroundColor: ThemeColors.snackBarTheme,
-                            ),
-                          );
                           onSubmit(context);
                         }
                       },

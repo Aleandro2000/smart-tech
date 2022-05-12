@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
@@ -22,19 +23,27 @@ class _DeleteAccountState extends State<DeleteAccount> {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const Login()),
           (route) => false);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Successfully deleted account ;)'),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "DELETED ACCOUNT!",
+        message: "Account deleted successfully! ;)",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Deleting account failed :('),
-          backgroundColor: ThemeColors.snackBarTheme,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "DELETED ACCOUNT FAILED!",
+        message: "Failed process for deleting account! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 
@@ -89,12 +98,6 @@ class _DeleteAccountState extends State<DeleteAccount> {
                 TextButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Processing Data'),
-                          backgroundColor: ThemeColors.snackBarTheme,
-                        ),
-                      );
                       delete(context);
                     }
                   },

@@ -46,6 +46,7 @@ dependencies:
   faker: ^2.0.0
   intl: ^0.17.0
   flutter_svg: ^1.0.3
+  another_flushbar: ^1.10.28
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/legal/terms_of_use.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
@@ -34,29 +35,40 @@ class _RegisterState extends State<Register> {
           context,
           MaterialPageRoute(builder: (context) => const Login()),
         );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-                'A email verification link has been sent to ${email.text.trim()}'),
-            backgroundColor: ThemeColors.snackBarTheme,
-          ),
-        );
+        Flushbar(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          padding: const EdgeInsets.all(24),
+          margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.green.withOpacity(0.9),
+          title: "REGISTER SUCCESSFULLY!",
+          message:
+              "'A email verification link has been sent to ${email.text.trim()}'",
+          duration: const Duration(seconds: 3),
+        ).show(context);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Failed to register the user :('),
-            backgroundColor: ThemeColors.snackBarTheme,
-          ),
-        );
+        Flushbar(
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
+          padding: const EdgeInsets.all(24),
+          margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.green.withOpacity(0.9),
+          title: "REGISTER FAILED!",
+          message: "Error to register user! :(",
+          duration: const Duration(seconds: 3),
+        ).show(context);
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Password and confirmation password has to be the same'),
-          backgroundColor: Colors.green,
-        ),
-      );
+      Flushbar(
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
+        padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
+        flushbarPosition: FlushbarPosition.TOP,
+        backgroundColor: Colors.green.withOpacity(0.9),
+        title: "REGISTER FAILED!",
+        message: "Password and confirmation password has to be the same! :(",
+        duration: const Duration(seconds: 3),
+      ).show(context);
     }
   }
 
@@ -183,12 +195,6 @@ class _RegisterState extends State<Register> {
                           );
                         }
                         if (_formKey.currentState!.validate() && termsOfUse) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing Data'),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
                           register(context);
                         }
                       },

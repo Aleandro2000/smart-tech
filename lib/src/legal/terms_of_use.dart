@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:easy_pdf_viewer/easy_pdf_viewer.dart";
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 
 class Terms extends StatefulWidget {
   const Terms({Key? key}) : super(key: key);
@@ -29,9 +30,7 @@ class _TermsState extends State<Terms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Terms of Use"),
-      ),
+      appBar: const DefaultAppBarTemplate(title: "Terms of Use"),
       body: _loading
           ? const Center(
               child: CircularProgressIndicator(),

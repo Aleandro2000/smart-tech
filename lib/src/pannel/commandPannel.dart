@@ -20,6 +20,7 @@ class _CommandPannelState extends State<CommandPannel> {
       appBar: AppBar(
         title: const Text("Command Pannel"),
         centerTitle: true,
+        toolbarHeight: 75,
       ),
       body: Form(
           key: _formKey,

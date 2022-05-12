@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/legal/terms_of_use.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class Register extends StatefulWidget {
@@ -37,14 +38,14 @@ class _RegisterState extends State<Register> {
           SnackBar(
             content: Text(
                 'A email verification link has been sent to ${email.text.trim()}'),
-            backgroundColor: Colors.green,
+            backgroundColor: ThemeColors.snackBarTheme,
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Failed to register the user :('),
-            backgroundColor: Colors.green,
+            backgroundColor: ThemeColors.snackBarTheme,
           ),
         );
       }

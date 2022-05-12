@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class ChangeEmail extends StatefulWidget {
@@ -25,14 +26,14 @@ class _ChangeEmailState extends State<ChangeEmail> {
         SnackBar(
           content:
               Text('A verification link has been sent to ${newEmail.text}'),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Email changing failed :('),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     }
@@ -103,7 +104,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Processing Data'),
-                              backgroundColor: Colors.green,
+                              backgroundColor: ThemeColors.snackBarTheme,
                             ),
                           );
                           onSubmit(context);

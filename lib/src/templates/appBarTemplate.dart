@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class AppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   final String title;
@@ -24,7 +25,7 @@ class _AppBarTemplateState extends State<AppBarTemplate> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Successfully logged out ;)'),
-        backgroundColor: Colors.green,
+        backgroundColor: ThemeColors.snackBarTheme,
       ),
     );
   }

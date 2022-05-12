@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
                     maxWidth: 600,
                   ),
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 12.5),
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
                   child: TextFormField(
                     obscureText: true,
                     enableSuggestions: false,

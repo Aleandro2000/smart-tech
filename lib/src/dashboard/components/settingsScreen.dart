@@ -3,6 +3,7 @@ import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
 import 'package:hard_and_soft_mobile/src/deleteAccount/deleteAccount.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -29,14 +30,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         SnackBar(
                           content: Text(
                               'A recover link has been sent to ${getEmailCurrentUser()}'),
-                          backgroundColor: Colors.green,
+                          backgroundColor: ThemeColors.snackBarTheme,
                         ),
                       );
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Recover account failed :('),
-                          backgroundColor: Colors.green,
+                          backgroundColor: ThemeColors.snackBarTheme,
                         ),
                       );
                     }
@@ -58,6 +59,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListView(
       children: [
         Container(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          alignment: Alignment.center,
           margin: const EdgeInsets.fromLTRB(12.5, 50, 12.5, 5),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -88,6 +93,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         Container(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          alignment: Alignment.center,
           margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -118,6 +127,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         Container(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          alignment: Alignment.center,
           margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -145,6 +158,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         Container(
+          constraints: const BoxConstraints(
+            maxWidth: 600,
+          ),
+          alignment: Alignment.center,
           margin: const EdgeInsets.fromLTRB(12.5, 5, 12.5, 50),
           decoration: BoxDecoration(
             color: Colors.white,

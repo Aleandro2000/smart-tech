@@ -8,6 +8,7 @@ import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:hard_and_soft_mobile/src/splashScreen/splashScreen.dart';
 import 'package:hard_and_soft_mobile/src/utils/security.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Smart Tech',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: ThemeColors.primarySwatchTheme,
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: const Splash(),
       routes: {

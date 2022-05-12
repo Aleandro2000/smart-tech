@@ -38,7 +38,6 @@ class _TermsState extends State<Terms> {
             )
           : PDFViewer(
               document: _doc,
-              backgroundColor: Colors.white,
             ),
     );
   }

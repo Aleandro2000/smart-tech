@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -25,14 +26,14 @@ class _ChangePasswordState extends State<ChangePassword> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Successfully changed password ;)'),
-            backgroundColor: Colors.green,
+            backgroundColor: ThemeColors.snackBarTheme,
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Changing password failed :('),
-            backgroundColor: Colors.green,
+            backgroundColor: ThemeColors.snackBarTheme,
           ),
         );
       }
@@ -41,7 +42,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         const SnackBar(
           content:
               Text('Password and confirmation password has to be the same'),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     }
@@ -127,7 +128,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Processing Data'),
-                              backgroundColor: Colors.green,
+                              backgroundColor: ThemeColors.snackBarTheme,
                             ),
                           );
                           onSubmit(context);

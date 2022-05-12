@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class DeleteAccount extends StatefulWidget {
@@ -23,14 +24,14 @@ class _DeleteAccountState extends State<DeleteAccount> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Successfully deleted account ;)'),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Deleting account failed :('),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     }
@@ -92,7 +93,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('Processing Data'),
-                          backgroundColor: Colors.green,
+                          backgroundColor: ThemeColors.snackBarTheme,
                         ),
                       );
                       delete(context);

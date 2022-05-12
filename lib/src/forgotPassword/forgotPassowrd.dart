@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -20,14 +21,14 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('A recover link has been sent to ${email.text}'),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Recover account failed :('),
-          backgroundColor: Colors.green,
+          backgroundColor: ThemeColors.snackBarTheme,
         ),
       );
     }
@@ -77,7 +78,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Processing Data'),
-                              backgroundColor: Colors.green,
+                              backgroundColor: ThemeColors.snackBarTheme,
                             ),
                           );
                           onSubmit(context);

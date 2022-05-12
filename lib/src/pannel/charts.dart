@@ -17,6 +17,7 @@ class _ChartsState extends State<Charts> {
       appBar: AppBar(
         title: const Text("Charts"),
         centerTitle: true,
+        toolbarHeight: 75,
       ),
       body: ListView(
         children: [

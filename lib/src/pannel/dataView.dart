@@ -16,6 +16,7 @@ class _DataViewState extends State<DataView> {
       appBar: AppBar(
         title: const Text("Data View"),
         centerTitle: true,
+        toolbarHeight: 75,
       ),
       body: ListView(
         children: [

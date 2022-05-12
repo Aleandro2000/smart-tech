@@ -14,6 +14,7 @@ class _VoiceCommandsState extends State<VoiceCommands> {
       appBar: AppBar(
         title: const Text("Voice Commands"),
         centerTitle: true,
+        toolbarHeight: 75,
       ),
       body: ListView(
         children: [

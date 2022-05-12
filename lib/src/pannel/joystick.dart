@@ -19,6 +19,7 @@ class _JoystickState extends State<Joystick> {
       appBar: AppBar(
         title: const Text("Joystick"),
         centerTitle: true,
+        toolbarHeight: 75,
       ),
       body: Container(
         margin: const EdgeInsets.only(bottom: 25),

@@ -4,6 +4,7 @@ import 'package:hard_and_soft_mobile/src/dashboard/components/pannelScreens.dart
 import 'package:hard_and_soft_mobile/src/dashboard/components/settingsScreen.dart';
 import 'package:hard_and_soft_mobile/src/templates/appBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/routes.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class Dashboard extends StatefulWidget {
   final int index;
@@ -34,25 +35,46 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: AppBarTemplate(title: routes[_selectedIndex].title!),
       body: routes[_selectedIndex].screen,
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: "Dashboard",
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(20),
+          topLeft: Radius.circular(20),
+        ),
+        child: Container(
+          decoration: const BoxDecoration(
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.speed),
-            label: "Pannel",
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.shifting, // Shifting
+            selectedItemColor: ThemeColors.selectedNavbarItem,
+            unselectedItemColor: ThemeColors.unselectedNavbarItem,
+            elevation: 10,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard),
+                label: "Dashboard",
+                backgroundColor: ThemeColors.backgroundNavbarTheme,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.speed),
+                label: "Pannel",
+                backgroundColor: ThemeColors.backgroundNavbarTheme,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: "Settings",
+                backgroundColor: ThemeColors.backgroundNavbarTheme,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Settings",
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        ),
       ),
     );
   }

@@ -76,7 +76,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 Container(
                   alignment: Alignment.center,
                   child: SvgPicture.asset(
-                    "assets/email.svg",
+                    "assets/security.svg",
                     semanticsLabel: "Security guard ilustration image",
                   ),
                 ),

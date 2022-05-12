@@ -72,7 +72,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                     maxWidth: 600,
                   ),
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.symmetric(vertical: 25),
+                  margin: const EdgeInsets.only(bottom: 25),
                   child: const Text(
                     "Are you sure you want to delete this account? This process is not reversible!",
                     textAlign: TextAlign.center,
@@ -86,7 +86,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
                     maxWidth: 600,
                   ),
                   alignment: Alignment.center,
-                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 50),
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 25),
                   child: TextFormField(
                     obscureText: true,
                     enableSuggestions: false,

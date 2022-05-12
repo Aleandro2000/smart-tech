@@ -48,65 +48,79 @@ class _DeleteAccountState extends State<DeleteAccount> {
         key: _formKey,
         child: ListView(
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Image(image: AssetImage('assets/logo.png')),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(vertical: 25),
-              child: const Text(
-                "Are you sure you want to delete this account? This process is not reversible!",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: const Image(image: AssetImage('assets/logo.png')),
                 ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 50),
-              child: TextFormField(
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                controller: password,
-                validator: (value) => requiredValidation(value!),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Your Password for Deleting',
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Processing Data'),
-                      backgroundColor: Colors.green,
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(vertical: 25),
+                  child: const Text(
+                    "Are you sure you want to delete this account? This process is not reversible!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24,
                     ),
-                  );
-                  delete(context);
-                }
-              },
-              child: const Text("Yes, I want to delete this account!"),
-              style: TextButton.styleFrom(
-                textStyle: const TextStyle(fontSize: 18),
-                padding: const EdgeInsets.all(12.5),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(bottom: 75),
-              child: TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text("No, I don't want to continue this process!"),
-                style: TextButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 18),
-                  padding: const EdgeInsets.all(12.5),
+                  ),
                 ),
-              ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 50),
+                  child: TextFormField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    controller: password,
+                    validator: (value) => requiredValidation(value!),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Your Password for Deleting',
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Processing Data'),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                      delete(context);
+                    }
+                  },
+                  child: const Text("Yes, I want to delete this account!"),
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 18),
+                    padding: const EdgeInsets.all(12.5),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(bottom: 75),
+                  child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                        "No, I don't want to continue this process!"),
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(fontSize: 18),
+                      padding: const EdgeInsets.all(12.5),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

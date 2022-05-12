@@ -50,60 +50,73 @@ class _ChangeEmailState extends State<ChangeEmail> {
         key: _formKey,
         child: ListView(
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Image(image: AssetImage('assets/logo.png')),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
-              child: TextFormField(
-                controller: newEmail,
-                validator: (value) => emailValidator(value!),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'New Email Address',
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: const Image(image: AssetImage('assets/logo.png')),
                 ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
-              child: TextFormField(
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                controller: password,
-                validator: (value) => requiredValidation(value!),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Confirm Password',
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(bottom: 25),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Processing Data'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                      onSubmit(context);
-                    }
-                  },
-                  child: const Text(
-                    'Submit',
-                    style: TextStyle(fontSize: 18),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+                  child: TextFormField(
+                    controller: newEmail,
+                    validator: (value) => emailValidator(value!),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'New Email Address',
+                    ),
                   ),
                 ),
-              ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+                  child: TextFormField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    controller: password,
+                    validator: (value) => requiredValidation(value!),
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Confirm Password',
+                    ),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(bottom: 25),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Processing Data'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                          onSubmit(context);
+                        }
+                      },
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

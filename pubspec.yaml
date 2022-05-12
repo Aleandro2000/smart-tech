@@ -42,6 +42,8 @@ dependencies:
   speech_to_text: ^5.4.3
   fluetooth: ^0.0.2
   d_chart: ^0.0.4
+  flutter_security_checker: ^1.0.1
+  faker: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -7,17 +7,22 @@ import 'package:flutter/material.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
 import 'package:hard_and_soft_mobile/src/splashScreen/splashScreen.dart';
+import 'package:hard_and_soft_mobile/src/utils/security.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  RendererBinding.instance.setSemanticsEnabled(true);
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(MyApp());
+  if (await onCheckRealDevice(check)) {
+    RendererBinding.instance.setSemanticsEnabled(true);
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    runApp(const MyApp());
+  }
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

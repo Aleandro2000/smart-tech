@@ -66,134 +66,150 @@ class _RegisterState extends State<Register> {
         key: _formKey,
         child: ListView(
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: const Image(image: AssetImage('assets/logo.png')),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
-              child: TextFormField(
-                validator: (value) => emailValidator(value!),
-                controller: email,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Email',
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  child: const Image(image: AssetImage('assets/logo.png')),
                 ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
-              child: TextFormField(
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                validator: (value) => strongPasswordValidation(value!),
-                controller: password,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Password',
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
-              child: TextFormField(
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                validator: (value) => requiredValidation(value!),
-                controller: confirmPassword,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Confirm Password',
-                ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(horizontal: 50),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: termsOfUse,
-                        onChanged: (context) => check(),
-                      ),
-                      const Text(
-                        "I accept Terms of Use.",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Terms()),
-                          );
-                        },
-                        child: const Text("View Terms of Use"),
-                      )
-                    ],
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+                  child: TextFormField(
+                    validator: (value) => emailValidator(value!),
+                    controller: email,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Email',
+                    ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (!termsOfUse) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            'You may not register without accepting Terms of Use!',
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+                  child: TextFormField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    validator: (value) => strongPasswordValidation(value!),
+                    controller: password,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Password',
+                    ),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(50, 0, 50, 6.25),
+                  child: TextFormField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
+                    validator: (value) => requiredValidation(value!),
+                    controller: confirmPassword,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Confirm Password',
+                    ),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: termsOfUse,
+                            onChanged: (context) => check(),
                           ),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                    }
-                    if (_formKey.currentState!.validate() && termsOfUse) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Processing Data'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                      register(context);
-                    }
-                  },
-                  child: const Text(
-                    'Register',
-                    style: TextStyle(fontSize: 18),
+                          const Text(
+                            "I accept Terms of Use.",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Terms()),
+                              );
+                            },
+                            child: const Text("View Terms of Use"),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.only(bottom: 40),
-              child: TextButton(
-                onPressed: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Login()),
+                Container(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (!termsOfUse) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'You may not register without accepting Terms of Use!',
+                              ),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        }
+                        if (_formKey.currentState!.validate() && termsOfUse) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Processing Data'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                          register(context);
+                        }
+                      },
+                      child: const Text(
+                        'Register',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ),
                 ),
-                child: const Text(
-                  "Do you have an account?",
-                  style: TextStyle(fontSize: 18),
+                Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.only(bottom: 40),
+                  child: TextButton(
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    ),
+                    child: const Text(
+                      "Do you have an account?",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ],
         ),

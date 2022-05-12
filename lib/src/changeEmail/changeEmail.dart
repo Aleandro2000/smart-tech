@@ -1,5 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/parser.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
@@ -62,7 +64,10 @@ class _ChangeEmailState extends State<ChangeEmail> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Image(image: AssetImage('assets/logo.png')),
+                  child: SvgPicture.asset(
+                    "assets/email.svg",
+                    semanticsLabel: "Person who modify an email image",
+                  ),
                 ),
                 Container(
                   constraints: const BoxConstraints(

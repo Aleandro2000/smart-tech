@@ -1,5 +1,6 @@
 import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
@@ -61,7 +62,10 @@ class _DeleteAccountState extends State<DeleteAccount> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  child: const Image(image: AssetImage('assets/logo.png')),
+                  child: SvgPicture.asset(
+                    "assets/meditation.svg",
+                    semanticsLabel: "Person who meditate ilustration",
+                  ),
                 ),
                 Container(
                   constraints: const BoxConstraints(

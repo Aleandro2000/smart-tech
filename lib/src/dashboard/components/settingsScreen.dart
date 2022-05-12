@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/changeEmail/changeEmail.dart';
 import 'package:hard_and_soft_mobile/src/changePassword/changePassword.dart';
@@ -26,20 +27,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     bool success =
                         await forgotPasswordAuth(getEmailCurrentUser()!);
                     if (success) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                              'A recover link has been sent to ${getEmailCurrentUser()}'),
-                          backgroundColor: ThemeColors.snackBarTheme,
-                        ),
-                      );
+                      Flushbar(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(16)),
+                        padding: const EdgeInsets.all(24),
+                        margin: const EdgeInsets.fromLTRB(
+                            8, kToolbarHeight + 25, 8, 0),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: ThemeColors.flusBarItemColor,
+                        title: "RECONVER SUCCESSFULLY!",
+                        message:
+                            "'A email recover account link has been sent to ${getEmailCurrentUser()}'",
+                        duration: const Duration(seconds: 3),
+                      ).show(context);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Recover account failed :('),
-                          backgroundColor: ThemeColors.snackBarTheme,
-                        ),
-                      );
+                      Flushbar(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(16)),
+                        padding: const EdgeInsets.all(24),
+                        margin: const EdgeInsets.fromLTRB(
+                            8, kToolbarHeight + 25, 8, 0),
+                        flushbarPosition: FlushbarPosition.TOP,
+                        backgroundColor: ThemeColors.flusBarItemColor,
+                        title: "RECOVER FAILED!",
+                        message: "Something is wrong! :(",
+                        duration: const Duration(seconds: 3),
+                      ).show(context);
                     }
                     Navigator.pop(context);
                   },

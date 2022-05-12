@@ -43,14 +43,7 @@ class _CommandPannelState extends State<CommandPannel> {
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Processing Data'),
-                            backgroundColor: Colors.green,
-                          ),
-                        );
-                      }
+                      if (_formKey.currentState!.validate()) {}
                     },
                     child: const Text(
                       'Submit',

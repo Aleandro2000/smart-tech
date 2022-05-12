@@ -26,7 +26,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         padding: const EdgeInsets.all(24),
         margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
         flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: Colors.green.withOpacity(0.9),
+        backgroundColor: ThemeColors.flusBarItemColor,
         title: "RECOVER ACCOUNT!",
         message: 'A recover link has been sent to ${email.text}',
         duration: const Duration(seconds: 3),
@@ -37,7 +37,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         padding: const EdgeInsets.all(24),
         margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
         flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: Colors.green.withOpacity(0.9),
+        backgroundColor: ThemeColors.flusBarItemColor,
         title: "PROBLEM FORE RECOVERING!",
         message: "Something is wrong! :(",
         duration: const Duration(seconds: 3),
@@ -87,12 +87,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Processing Data'),
-                              backgroundColor: ThemeColors.snackBarTheme,
-                            ),
-                          );
                           onSubmit(context);
                         }
                       },

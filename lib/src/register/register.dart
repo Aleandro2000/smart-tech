@@ -40,7 +40,7 @@ class _RegisterState extends State<Register> {
           padding: const EdgeInsets.all(24),
           margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
           flushbarPosition: FlushbarPosition.TOP,
-          backgroundColor: Colors.green.withOpacity(0.9),
+          backgroundColor: ThemeColors.flusBarItemColor,
           title: "REGISTER SUCCESSFULLY!",
           message:
               "'A email verification link has been sent to ${email.text.trim()}'",
@@ -52,7 +52,7 @@ class _RegisterState extends State<Register> {
           padding: const EdgeInsets.all(24),
           margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
           flushbarPosition: FlushbarPosition.TOP,
-          backgroundColor: Colors.green.withOpacity(0.9),
+          backgroundColor: ThemeColors.flusBarItemColor,
           title: "REGISTER FAILED!",
           message: "Error to register user! :(",
           duration: const Duration(seconds: 3),
@@ -64,7 +64,7 @@ class _RegisterState extends State<Register> {
         padding: const EdgeInsets.all(24),
         margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
         flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: Colors.green.withOpacity(0.9),
+        backgroundColor: ThemeColors.flusBarItemColor,
         title: "REGISTER FAILED!",
         message: "Password and confirmation password has to be the same! :(",
         duration: const Duration(seconds: 3),
@@ -185,14 +185,19 @@ class _RegisterState extends State<Register> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (!termsOfUse) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'You may not register without accepting Terms of Use!',
-                              ),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
+                          Flushbar(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16)),
+                            padding: const EdgeInsets.all(24),
+                            margin: const EdgeInsets.fromLTRB(
+                                8, kToolbarHeight + 25, 8, 0),
+                            flushbarPosition: FlushbarPosition.TOP,
+                            backgroundColor: ThemeColors.flusBarItemColor,
+                            title: "REGISTER FAILED!",
+                            message:
+                                "You may not register without accepting Terms of Use!",
+                            duration: const Duration(seconds: 3),
+                          ).show(context);
                         }
                         if (_formKey.currentState!.validate() && termsOfUse) {
                           register(context);

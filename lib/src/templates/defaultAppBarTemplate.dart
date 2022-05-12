@@ -17,20 +17,6 @@ class DefaultAppBarTemplate extends StatefulWidget with PreferredSizeWidget {
 }
 
 class _DefaultAppBarTemplateState extends State<DefaultAppBarTemplate> {
-  void logout(context) {
-    logoutAuth();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Login()),
-    );
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Successfully logged out ;)'),
-        backgroundColor: ThemeColors.snackBarTheme,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBar(

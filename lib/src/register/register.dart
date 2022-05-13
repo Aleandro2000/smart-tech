@@ -1,9 +1,8 @@
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/legal/terms_of_use.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class Register extends StatefulWidget {
@@ -35,40 +34,18 @@ class _RegisterState extends State<Register> {
           context,
           MaterialPageRoute(builder: (context) => const Login()),
         );
-        Flushbar(
-          borderRadius: const BorderRadius.all(Radius.circular(16)),
-          padding: const EdgeInsets.all(24),
-          margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-          flushbarPosition: FlushbarPosition.TOP,
-          backgroundColor: ThemeColors.flusBarItemColor,
-          title: "REGISTER SUCCESSFULLY!",
-          message:
-              "'A email verification link has been sent to ${email.text.trim()}'",
-          duration: const Duration(seconds: 3),
-        ).show(context);
+        FlushBarTemplate(
+            context,
+            "REGISTER SUCCESSFULLY!",
+            'A email verification link has been sent to ${email.text.trim()}',
+            false);
       } else {
-        Flushbar(
-          borderRadius: const BorderRadius.all(Radius.circular(16)),
-          padding: const EdgeInsets.all(24),
-          margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-          flushbarPosition: FlushbarPosition.TOP,
-          backgroundColor: ThemeColors.flusBarItemColor,
-          title: "REGISTER FAILED!",
-          message: "Error to register user! :(",
-          duration: const Duration(seconds: 3),
-        ).show(context);
+        FlushBarTemplate(
+            context, "REGISTER FAILED!", "Error to register user! :(", false);
       }
     } else {
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "REGISTER FAILED!",
-        message: "Password and confirmation password has to be the same! :(",
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(context, "REGISTER FAILED!",
+          "Password and confirmation password has to be the same! :(", false);
     }
   }
 
@@ -185,21 +162,13 @@ class _RegisterState extends State<Register> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (!termsOfUse) {
-                          Flushbar(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(16)),
-                            padding: const EdgeInsets.all(24),
-                            margin: const EdgeInsets.fromLTRB(
-                                8, kToolbarHeight + 25, 8, 0),
-                            flushbarPosition: FlushbarPosition.TOP,
-                            backgroundColor: ThemeColors.flusBarItemColor,
-                            title: "REGISTER FAILED!",
-                            message:
-                                "You may not register without accepting Terms of Use!",
-                            duration: const Duration(seconds: 3),
-                          ).show(context);
-                        }
-                        if (_formKey.currentState!.validate() && termsOfUse) {
+                          FlushBarTemplate(
+                              context,
+                              "REGISTER FAILED!",
+                              "You may not register without accepting Terms of Use!",
+                              false);
+                        } else if (_formKey.currentState!.validate() &&
+                            termsOfUse) {
                           register(context);
                         }
                       },

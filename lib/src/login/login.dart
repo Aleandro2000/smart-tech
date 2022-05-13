@@ -1,10 +1,9 @@
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/dashboard/dashboard.dart';
 import 'package:hard_and_soft_mobile/src/forgotPassword/forgotPassowrd.dart';
 import 'package:hard_and_soft_mobile/src/register/register.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class Login extends StatefulWidget {
@@ -26,28 +25,10 @@ class _LoginState extends State<Login> {
         context,
         MaterialPageRoute(builder: (context) => const Dashboard(index: 0)),
       );
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "AUTH SUCCEDED!",
-        message: "Successfully loggged in! ;)",
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(
+          context, "AUTH SUCCEDED!", "Successfully loggged in! ;)", true);
     } else {
-      ScaffoldMessenger.of(context).activate();
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "AUTH FAILED!",
-        message: "Error to login! :(",
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(context, "AUTH FAILED!", "Error to login! :(", false);
     }
   }
 

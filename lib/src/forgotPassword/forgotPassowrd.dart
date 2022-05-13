@@ -1,9 +1,8 @@
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -21,27 +20,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     bool success = await forgotPasswordAuth(email.text);
     if (success) {
       Navigator.pop(context);
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "RECOVER ACCOUNT!",
-        message: 'A recover link has been sent to ${email.text}',
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(context, "RECOVER ACCOUNT MESSAGE!",
+          'A recover link has been sent to ${email.text}', true);
     } else {
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "PROBLEM FOR RECOVERING!",
-        message: "Something is wrong! :(",
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(
+          context, "RECOVER ACCOUNT MESSAGE!", "Something is wrong! :(", true);
     }
   }
 

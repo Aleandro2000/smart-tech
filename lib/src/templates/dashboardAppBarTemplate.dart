@@ -1,8 +1,7 @@
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:hard_and_soft_mobile/src/login/login.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class DashboardAppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   final String title;
@@ -25,16 +24,8 @@ class _DashboardAppBarTemplateState extends State<DashboardAppBarTemplate> {
       context,
       MaterialPageRoute(builder: (context) => const Login()),
     );
-    Flushbar(
-      borderRadius: const BorderRadius.all(Radius.circular(16)),
-      padding: const EdgeInsets.all(24),
-      margin: const EdgeInsets.fromLTRB(8, 10, 8, 0),
-      flushbarPosition: FlushbarPosition.TOP,
-      backgroundColor: ThemeColors.flusBarItemColor,
-      title: "SIGN OUT MESSAGE!",
-      message: "Successfully logged out! ;)",
-      duration: const Duration(seconds: 3),
-    ).show(context);
+    FlushBarTemplate(
+        context, "LOG OUT MESSAGE!", "Successfully logged out! ;)", false);
   }
 
   @override

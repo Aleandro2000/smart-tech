@@ -1,11 +1,9 @@
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/parser.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import 'package:hard_and_soft_mobile/src/utils/validators.dart';
 
 class ChangeEmail extends StatefulWidget {
@@ -26,27 +24,11 @@ class _ChangeEmailState extends State<ChangeEmail> {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const Login()),
           (route) => false);
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "LINK SENT SUCCESSFULLY!",
-        message: 'A verification link has been sent to ${newEmail.text}',
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(context, "LINK SENT SUCCESSFULLY!",
+          'A verification link has been sent to ${newEmail.text}', true);
     } else {
-      Flushbar(
-        borderRadius: const BorderRadius.all(Radius.circular(16)),
-        padding: const EdgeInsets.all(24),
-        margin: const EdgeInsets.fromLTRB(8, kToolbarHeight + 25, 8, 0),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: ThemeColors.flusBarItemColor,
-        title: "CHANGING EMAIL FAILED!",
-        message: "Error to change email! :(",
-        duration: const Duration(seconds: 3),
-      ).show(context);
+      FlushBarTemplate(
+          context, "CHANGING EMAIL FAILED!", "Error to change email! :(", true);
     }
   }
 

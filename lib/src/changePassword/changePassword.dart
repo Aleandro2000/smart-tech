@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_password_strength/flutter_password_strength.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
@@ -15,13 +16,12 @@ class ChangePassword extends StatefulWidget {
 class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
   final oldPassword = TextEditingController();
-  final newPassword = TextEditingController();
+  String newPassword = "";
   final confirmPassword = TextEditingController();
 
   void onSubmit(BuildContext context) async {
-    if (newPassword.text == confirmPassword.text) {
-      bool success =
-          await changePasswordAuth(oldPassword.text, newPassword.text);
+    if (newPassword == confirmPassword.text) {
+      bool success = await changePasswordAuth(oldPassword.text, newPassword);
       if (success) {
         Navigator.pop(context);
         FlushBarTemplate(context, "PASSWORD CHANGED!",
@@ -83,7 +83,16 @@ class _ChangePasswordState extends State<ChangePassword> {
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
-                    controller: newPassword,
+                    onChanged: (value) {
+                      setState(() {
+                        newPassword = value;
+                      });
+                    },
+                    onSaved: (value) {
+                      setState(() {
+                        newPassword = value!;
+                      });
+                    },
                     validator: (value) => strongPasswordValidation(value!),
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
@@ -104,6 +113,17 @@ class _ChangePasswordState extends State<ChangePassword> {
                       border: OutlineInputBorder(),
                       hintText: 'Confirm Password',
                     ),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                  child: FlutterPasswordStrength(
+                    password: newPassword,
                   ),
                 ),
                 Container(

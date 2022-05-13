@@ -1,3 +1,5 @@
+import "package:password_strength/password_strength.dart";
+
 String? requiredValidation(String text) {
   if (text.isEmpty) {
     return "Required input!";
@@ -7,9 +9,7 @@ String? requiredValidation(String text) {
 }
 
 String? strongPasswordValidation(String password) {
-  if (!RegExp(
-    r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$',
-  ).hasMatch(password)) {
+  if (estimatePasswordStrength(password) < 0.3) {
     return "Weak password!";
   } else {
     return null;

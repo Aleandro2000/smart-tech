@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_password_strength/flutter_password_strength.dart';
 import 'package:hard_and_soft_mobile/src/legal/terms_of_use.dart';
 import 'package:hard_and_soft_mobile/src/login/login.dart';
 import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
@@ -17,7 +18,7 @@ class _RegisterState extends State<Register> {
   bool termsOfUse = false;
 
   final email = TextEditingController();
-  final password = TextEditingController();
+  String password = "";
   final confirmPassword = TextEditingController();
 
   void check() {
@@ -27,8 +28,8 @@ class _RegisterState extends State<Register> {
   }
 
   void register(BuildContext context) async {
-    if (password.text == confirmPassword.text) {
-      bool success = await registerAuth(email.text.trim(), password.text);
+    if (password == confirmPassword.text) {
+      bool success = await registerAuth(email.text.trim(), password);
       if (success) {
         Navigator.pushReplacement(
           context,
@@ -91,7 +92,16 @@ class _RegisterState extends State<Register> {
                     enableSuggestions: false,
                     autocorrect: false,
                     validator: (value) => strongPasswordValidation(value!),
-                    controller: password,
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    },
+                    onSaved: (value) {
+                      setState(() {
+                        password = value!;
+                      });
+                    },
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Password',
@@ -114,6 +124,17 @@ class _RegisterState extends State<Register> {
                       border: OutlineInputBorder(),
                       hintText: 'Confirm Password',
                     ),
+                  ),
+                ),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 600,
+                  ),
+                  alignment: Alignment.center,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                  child: FlutterPasswordStrength(
+                    password: password,
                   ),
                 ),
                 Container(

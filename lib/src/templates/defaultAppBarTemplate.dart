@@ -1,7 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:hard_and_soft_mobile/src/login/login.dart';
-import 'package:hard_and_soft_mobile/src/utils/auth.dart';
-import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class DefaultAppBarTemplate extends StatefulWidget with PreferredSizeWidget {
   final String title;

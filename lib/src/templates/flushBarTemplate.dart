@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:another_flushbar/flushbar.dart';
 import "package:flutter/material.dart";
+import 'package:another_flushbar/flushbar.dart';
 import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 void FlushBarTemplate(

@@ -28,7 +28,8 @@ class _LoginState extends State<Login> {
       FlushBarTemplate(
           context, "AUTH SUCCEDED!", "Successfully loggged in! ;)", true);
     } else {
-      FlushBarTemplate(context, "AUTH FAILED!", "Error to login! :(", false);
+      FlushBarTemplate(
+          context, "AUTHENTICATION FAILED!", "Error to log in! :(", false);
     }
   }
 

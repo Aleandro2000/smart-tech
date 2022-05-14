@@ -60,7 +60,7 @@ class _ChartsState extends State<Charts> {
                           includePoints: true,
                         ),
                       ),
-                      Text('Day'),
+                      const Text('Day'),
                     ],
                   ),
                 ),

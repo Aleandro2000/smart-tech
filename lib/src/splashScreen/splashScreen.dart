@@ -1,4 +1,7 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe, file_names
+
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 import "package:splashscreen/splashscreen.dart";
 import "package:hard_and_soft_mobile/src/login/login.dart";
 
@@ -17,7 +20,7 @@ class _SplashState extends State<Splash> {
       navigateAfterSeconds: const Login(),
       loadingText: const Text(''),
       image: Image.asset("assets/chip.png"),
-      backgroundColor: Colors.white,
+      backgroundColor: ThemeColors.splashScreenTheme,
       photoSize: 109.0,
       useLoader: false,
     );

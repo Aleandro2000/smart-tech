@@ -13,7 +13,7 @@ class VoiceCommands extends StatefulWidget {
 class _VoiceCommandsState extends State<VoiceCommands> {
   final SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
-  String _lastWords = '';
+  String _lastWords = "";
 
   @override
   void initState() {

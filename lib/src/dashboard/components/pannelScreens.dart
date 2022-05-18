@@ -4,6 +4,7 @@ import 'package:hard_and_soft_mobile/src/pannel/commandPannel.dart';
 import 'package:hard_and_soft_mobile/src/pannel/dataView.dart';
 import 'package:hard_and_soft_mobile/src/pannel/joystick.dart';
 import 'package:hard_and_soft_mobile/src/pannel/voiceCommands.dart';
+import 'package:hard_and_soft_mobile/src/utils/security.dart';
 
 class PannelScreen extends StatefulWidget {
   const PannelScreen({Key? key}) : super(key: key);
@@ -150,11 +151,14 @@ class _PannelScreenState extends State<PannelScreen> {
                 title: const Text("Voice Commands"),
                 leading: const Icon(Icons.mic),
                 trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const VoiceCommands()),
-                ),
+                onTap: () async => {
+                  if (await isRealDevice())
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const VoiceCommands()),
+                    ),
+                },
               ),
             ),
             Container(

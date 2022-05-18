@@ -11,6 +11,6 @@ Future<bool> onCheckRealDevice(bool check) async {
   return (isRooted && isRealDevice && hasCorrectlyInstalled) || !check;
 }
 
-Future<bool> isRealDevice() async {
-  return await FlutterSecurityChecker.isRealDevice;
+Future<bool> isRealDevice() {
+  return FlutterSecurityChecker.isRealDevice;
 }

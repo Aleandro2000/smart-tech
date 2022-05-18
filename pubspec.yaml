@@ -49,6 +49,7 @@ dependencies:
   another_flushbar: ^1.10.28
   flutter_password_strength: ^0.1.6
   password_strength: ^0.2.0
+  connectivity_plus: ^2.3.0
 
 dev_dependencies:
   flutter_test:

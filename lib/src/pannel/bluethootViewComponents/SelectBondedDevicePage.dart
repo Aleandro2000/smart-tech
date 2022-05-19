@@ -131,7 +131,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
                   ),
                 )
               : IconButton(
-                  icon: Icon(Icons.replay),
+                  icon: const Icon(Icons.replay),
                   onPressed: _restartDiscovery,
                 )
         ],

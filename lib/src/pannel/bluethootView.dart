@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:bluetoothadapter/bluetoothadapter.dart";
+import 'package:hard_and_soft_mobile/src/templates/dashboardAppBarTemplate.dart';
 
 class BluethootView extends StatefulWidget {
   const BluethootView({Key? key}) : super(key: key);
@@ -25,10 +26,8 @@ class _BluethootViewState extends State<BluethootView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Plugin example app'),
-      ),
-      body: Column(
+      appBar: const DashboardAppBarTemplate(title: "Bluethoot View"),
+      body: ListView(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

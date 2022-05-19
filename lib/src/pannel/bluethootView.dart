@@ -337,7 +337,7 @@ class _BluethootView extends State<BluethootView> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Error occured while connecting'),
-            content: Text("${ex.toString()}"),
+            content: Text(ex.toString()),
             actions: <Widget>[
               TextButton(
                 child: const Text("Close"),

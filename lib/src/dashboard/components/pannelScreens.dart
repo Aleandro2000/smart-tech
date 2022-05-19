@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:hard_and_soft_mobile/src/pannel/bluethootView.dart';
 import 'package:hard_and_soft_mobile/src/pannel/charts.dart';
 import 'package:hard_and_soft_mobile/src/pannel/commandPannel.dart';
 import 'package:hard_and_soft_mobile/src/pannel/dataView.dart';
@@ -157,6 +158,44 @@ class _PannelScreenState extends State<PannelScreen> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const VoiceCommands()),
+                    ),
+                },
+              ),
+            ),
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
+              ),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                title: const Text("Bluethoot View"),
+                leading: const Icon(Icons.bluetooth),
+                trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () async => {
+                  if (await isRealDevice())
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BluethootView()),
                     ),
                 },
               ),

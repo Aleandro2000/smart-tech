@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  bluetoothadapter:
+    dependency: "direct main"
+    description:
+      name: bluetoothadapter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.3"
   boolean_selector:
     dependency: transitive
     description:

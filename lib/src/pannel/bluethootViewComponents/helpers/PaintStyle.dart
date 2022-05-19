@@ -27,10 +27,10 @@ class PaintStyle {
     this.strokeCap = StrokeCap.butt,
     this.strokeJoin = StrokeJoin.miter,
     this.strokeMiterLimit = 4.0,
-    this.maskFilter, // null
+    this.maskFilter,
     this.filterQuality = FilterQuality.none,
-    this.shader, // null
-    this.colorFilter, // null
+    this.shader,
+    this.colorFilter,
     this.invertColors = false,
   });
 

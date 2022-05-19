@@ -14,8 +14,7 @@ class BluetoothDeviceListEntry extends ListTile {
           onTap: onTap,
           onLongPress: onLongPress,
           enabled: enabled,
-          leading: const Icon(
-              Icons.devices), // @TODO . !BluetoothClass! class aware icon
+          leading: const Icon(Icons.devices),
           title: Text(device.name ?? ""),
           subtitle: Text(device.address.toString()),
           trailing: ListView(

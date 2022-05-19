@@ -1,13 +1,6 @@
-/// @name LineChart
-/// @version 0.0.5
-/// @description Simple line chart widget
-/// @author Patryk "PsychoX" Ludwikowski <patryk.ludwikowski.7+dart@gmail.com>
-/// @license MIT License (see https://mit-license.org/)
 import 'dart:math' as math show min, max;
 import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
-
 import './PaintStyle.dart';
 
 class LabelEntry {
@@ -50,13 +43,11 @@ class LineChart extends StatelessWidget {
     this.horizontalLabelsTextStyle,
     this.verticalLabelsTextStyle,
     PaintStyle horizontalLinesStyle = const PaintStyle(color: Colors.grey),
-    PaintStyle? verticalLinesStyle, // null for default
-
+    PaintStyle? verticalLinesStyle,
     this.additionalMinimalHorizontalLabelsInterval = 8,
     this.additionalMinimalVerticalLablesInterval = 8,
-    Iterable<PaintStyle?>?
-        seriesPointsStyles, // null would use predefined set of styles
-    Iterable<PaintStyle>? seriesLinesStyles, // null for default
+    Iterable<PaintStyle?>? seriesPointsStyles,
+    Iterable<PaintStyle>? seriesLinesStyles,
   })  : horizontalLinesPaint = horizontalLinesStyle.toPaint(),
         verticalLinesPaint = verticalLinesStyle?.toPaint(),
         seriesPointsPaints = _prepareSeriesPointsPaints(seriesPointsStyles),
@@ -74,7 +65,6 @@ class LineChart extends StatelessWidget {
   static List<Paint?> _prepareSeriesPointsPaints(
       Iterable<PaintStyle?>? seriesPointsStyles) {
     if (seriesPointsStyles == null) {
-      // Default paint for points
       return List<Paint?>.unmodifiable(<Paint>[
         const PaintStyle(strokeWidth: 1.7, color: Colors.blue).toPaint(),
         const PaintStyle(strokeWidth: 1.7, color: Colors.red).toPaint(),
@@ -152,8 +142,6 @@ class _LineChartPainter extends CustomPainter {
 
   double _minimalHorizontalRatio = 0;
   double _minimalVerticalRatio = 0;
-
-  /// Creates `_LineChartPainter` (`CustomPainter`) with given data and styling.
   _LineChartPainter({
     this.padding = const EdgeInsets.fromLTRB(40, 8, 8, 32),
     required this.arguments,
@@ -171,7 +159,6 @@ class _LineChartPainter extends CustomPainter {
   }) : minimalHorizontalLabelsInterval =
             (horizontalLabelsTextStyle?.fontSize ?? 12) +
                 additionalMinimalHorizontalLabelsInterval {
-    // Find max & min values of data to be show
     for (Iterable<double> series in values) {
       for (double value in series) {
         if (value > maxValue) {
@@ -262,7 +249,6 @@ class _LineChartPainter extends CustomPainter {
 
         Iterable<LabelEntry> generator(double optimalStepValue, int stepsNumber,
             [double value = 0.0]) sync* {
-          //double value = _bottomValue;
           for (int i = 0; i < stepsNumber; i++) {
             yield LabelEntry(value, value.toString());
             value += optimalStepValue;
@@ -413,17 +399,15 @@ class _LineChartPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_LineChartPainter old) => (arguments != old.arguments ||
-          values != old.values ||
-          argumentsLabels != old.argumentsLabels ||
-          valuesLabels != old.valuesLabels ||
-          seriesPointsPaints != old.seriesPointsPaints ||
-          seriesLinesPaints != old.seriesLinesPaints ||
-          horizontalLabelsTextStyle != old.horizontalLabelsTextStyle ||
-          verticalLabelsTextStyle != old.verticalLabelsTextStyle ||
-          padding != old.padding //
-      );
+      values != old.values ||
+      argumentsLabels != old.argumentsLabels ||
+      valuesLabels != old.valuesLabels ||
+      seriesPointsPaints != old.seriesPointsPaints ||
+      seriesLinesPaints != old.seriesLinesPaints ||
+      horizontalLabelsTextStyle != old.horizontalLabelsTextStyle ||
+      verticalLabelsTextStyle != old.verticalLabelsTextStyle ||
+      padding != old.padding);
 
-  // ..., 0.01, 0.02, 0.05, 0.1, [0.125], 0.2, [0.25], 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, ...
   double _calculateOptimalStepValue(double valueRange, double height) {
     final int maxSteps = height ~/ minimalHorizontalLabelsInterval;
     if (maxSteps <= 0) {
@@ -447,13 +431,12 @@ class _LineChartPainter extends CustomPainter {
         interval *= 10;
       }
     } else {
-      // @TODO ! not working at all for lower :C
       int zeros = 0;
       while (interval < 0) {
         interval = interval * 10;
         zeros += 1;
       }
-      /**/ if (interval <= 1) {
+      if (interval <= 1) {
         interval = 1;
       } else if (interval <= 2) {
         interval = 2;

@@ -93,67 +93,72 @@ class _DiscoveryPage extends State<DiscoveryPage> {
                 )
         ],
       ),
-      body: ListView.builder(
-        itemCount: results.length,
-        itemBuilder: (BuildContext context, index) {
-          BluetoothDiscoveryResult result = results[index];
-          final device = result.device;
-          final address = device.address;
-          return BluetoothDeviceListEntry(
-            device: device,
-            rssi: result.rssi,
-            onTap: () {
-              Navigator.of(context).pop(result.device);
-            },
-            onLongPress: () async {
-              try {
-                bool bonded = false;
-                if (device.isBonded) {
-                  print('Unbonding from ${device.address}...');
-                  await FlutterBluetoothSerial.instance
-                      .removeDeviceBondWithAddress(address);
-                  print('Unbonding from ${device.address} has succed');
-                } else {
-                  print('Bonding with ${device.address}...');
-                  bonded = (await FlutterBluetoothSerial.instance
-                      .bondDeviceAtAddress(address))!;
-                  print(
-                      'Bonding with ${device.address} has ${bonded ? 'succed' : 'failed'}.');
-                }
-                setState(() {
-                  results[results.indexOf(result)] = BluetoothDiscoveryResult(
-                      device: BluetoothDevice(
-                        name: device.name ?? '',
-                        address: address,
-                        type: device.type,
-                        bondState: bonded
-                            ? BluetoothBondState.bonded
-                            : BluetoothBondState.none,
-                      ),
-                      rssi: result.rssi);
-                });
-              } catch (ex) {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: const Text('Error occured while bonding'),
-                      content: Text(ex.toString()),
-                      actions: <Widget>[
-                        TextButton(
-                          child: const Text("Close"),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        ),
-                      ],
+      body: Row(
+        children: [
+          ListView.builder(
+            itemCount: results.length,
+            itemBuilder: (BuildContext context, index) {
+              BluetoothDiscoveryResult result = results[index];
+              final device = result.device;
+              final address = device.address;
+              return BluetoothDeviceListEntry(
+                device: device,
+                rssi: result.rssi,
+                onTap: () {
+                  Navigator.of(context).pop(result.device);
+                },
+                onLongPress: () async {
+                  try {
+                    bool bonded = false;
+                    if (device.isBonded) {
+                      print('Unbonding from ${device.address}...');
+                      await FlutterBluetoothSerial.instance
+                          .removeDeviceBondWithAddress(address);
+                      print('Unbonding from ${device.address} has succed');
+                    } else {
+                      print('Bonding with ${device.address}...');
+                      bonded = (await FlutterBluetoothSerial.instance
+                          .bondDeviceAtAddress(address))!;
+                      print(
+                          'Bonding with ${device.address} has ${bonded ? 'succed' : 'failed'}.');
+                    }
+                    setState(() {
+                      results[results.indexOf(result)] =
+                          BluetoothDiscoveryResult(
+                              device: BluetoothDevice(
+                                name: device.name ?? '',
+                                address: address,
+                                type: device.type,
+                                bondState: bonded
+                                    ? BluetoothBondState.bonded
+                                    : BluetoothBondState.none,
+                              ),
+                              rssi: result.rssi);
+                    });
+                  } catch (ex) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Error occured while bonding'),
+                          content: Text(ex.toString()),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text("Close"),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
                     );
-                  },
-                );
-              }
+                  }
+                },
+              );
             },
-          );
-        },
+          ),
+        ],
       ),
     );
   }

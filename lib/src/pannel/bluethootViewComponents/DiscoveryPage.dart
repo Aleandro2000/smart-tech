@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -73,7 +71,6 @@ class _DiscoveryPage extends State<DiscoveryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 75,
         title: isDiscovering
             ? const Text('Discovering devices')
             : const Text('Discovered devices'),
@@ -138,7 +135,7 @@ class _DiscoveryPage extends State<DiscoveryPage> {
                   builder: (BuildContext context) {
                     return AlertDialog(
                       title: const Text('Error occured while bonding'),
-                      content: Text(ex.toString()),
+                      content: Text("${ex.toString()}"),
                       actions: <Widget>[
                         TextButton(
                           child: const Text("Close"),

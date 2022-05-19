@@ -15,13 +15,14 @@ class BluetoothDeviceListEntry extends ListTile {
           onLongPress: onLongPress,
           enabled: enabled,
           leading: const Icon(Icons.devices),
-          title: Text('${device.name}'),
+          title: Text(device.name ?? ""),
           subtitle: Text(device.address.toString()),
-          trailing: Column(
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               rssi != null
                   ? Container(
-                      margin: const EdgeInsets.all(8.0),
+                      margin: new EdgeInsets.all(8.0),
                       child: DefaultTextStyle(
                         style: _computeTextStyle(rssi),
                         child: Column(

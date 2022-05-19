@@ -9,7 +9,7 @@ class SelectBondedDevicePage extends StatefulWidget {
   const SelectBondedDevicePage({this.checkAvailability = true});
 
   @override
-  _SelectBondedDevicePage createState() => _SelectBondedDevicePage();
+  _SelectBondedDevicePage createState() => new _SelectBondedDevicePage();
 }
 
 enum _DeviceAvailability {
@@ -29,6 +29,7 @@ class _DeviceWithAvailability {
 class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
   List<_DeviceWithAvailability> devices =
       List<_DeviceWithAvailability>.empty(growable: true);
+
   StreamSubscription<BluetoothDiscoveryResult>? _discoveryStreamSubscription;
   bool _isDiscovering = false;
 
@@ -44,7 +45,6 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
       _startDiscovery();
     }
 
-    // Setup a list of the bonded devices
     FlutterBluetoothSerial.instance
         .getBondedDevices()
         .then((List<BluetoothDevice> bondedDevices) {
@@ -114,7 +114,6 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
         .toList();
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 75,
         title: const Text('Select device'),
         actions: <Widget>[
           _isDiscovering

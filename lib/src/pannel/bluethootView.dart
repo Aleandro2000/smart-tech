@@ -95,9 +95,7 @@ class _BluethootViewState extends State<BluethootView> {
                   child: RaisedButton(
                     onPressed: () {
                       flutterbluetoothadapter.sendMessage(_controller.text,
-                          sendByteByByte: false);
-//                        flutterbluetoothadapter.sendMessage(".",
-//                            sendByteByByte: true);
+                          sendByteByByte: true);
                       _controller.text = "";
                     },
                     child: const Icon(

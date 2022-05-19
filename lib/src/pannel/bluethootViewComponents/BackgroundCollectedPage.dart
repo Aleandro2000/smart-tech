@@ -55,6 +55,7 @@ class BackgroundCollectedPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 75,
           title: const Text('Collected data'),
           actions: <Widget>[
             (task.inProgress

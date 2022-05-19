@@ -104,13 +104,14 @@ class _ChatPage extends State<ChatPage> {
     final serverName = widget.server.name ?? "Unknown";
     return Scaffold(
       appBar: AppBar(
+          toolbarHeight: 75,
           title: (isConnecting
               ? Text('Connecting chat to ' + serverName + '...')
               : isConnected
                   ? Text('Live chat with ' + serverName)
                   : Text('Chat log with ' + serverName))),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: <Widget>[
             Flexible(
               child: ListView(

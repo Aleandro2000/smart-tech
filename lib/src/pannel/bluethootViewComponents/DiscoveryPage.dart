@@ -76,6 +76,7 @@ class _DiscoveryPage extends State<DiscoveryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 75,
         title: isDiscovering
             ? const Text('Discovering devices')
             : const Text('Discovered devices'),

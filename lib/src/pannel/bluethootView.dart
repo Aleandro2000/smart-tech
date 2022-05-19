@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:bluetoothadapter/bluetoothadapter.dart";
-import 'package:hard_and_soft_mobile/src/templates/dashboardAppBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 
 class BluethootView extends StatefulWidget {
   const BluethootView({Key? key}) : super(key: key);
@@ -11,9 +11,9 @@ class BluethootView extends StatefulWidget {
 
 class _BluethootViewState extends State<BluethootView> {
   Bluetoothadapter flutterbluetoothadapter = Bluetoothadapter();
-  String _connectionStatus = "NONE";
+  final String _connectionStatus = "NONE";
   List<BtDevice> devices = [];
-  String _recievedMessage = "";
+  final String _recievedMessage = "";
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -26,7 +26,7 @@ class _BluethootViewState extends State<BluethootView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DashboardAppBarTemplate(title: "Bluethoot View"),
+      appBar: const DefaultAppBarTemplate(title: "Bluethoot View"),
       body: ListView(
         children: <Widget>[
           Row(

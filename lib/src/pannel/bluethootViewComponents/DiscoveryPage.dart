@@ -89,7 +89,10 @@ class _DiscoveryPage extends State<DiscoveryPage> {
                   ),
                 )
               : IconButton(
-                  icon: Icon(Icons.replay),
+                  icon: const Icon(
+                    Icons.replay,
+                    semanticLabel: "Replay",
+                  ),
                   onPressed: _restartDiscovery,
                 )
         ],

@@ -11,8 +11,6 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:hard_and_soft_mobile/src/pannel/bluethootViewComponents/BackgroundCollectedPage.dart';
 import 'package:hard_and_soft_mobile/src/pannel/bluethootViewComponents/BackgroundCollectingTask.dart';
 
-// import './helpers/LineChart.dart';
-
 class BluethootView extends StatefulWidget {
   const BluethootView({Key? key}) : super(key: key);
 
@@ -37,7 +35,6 @@ class _BluethootView extends State<BluethootView> {
   void initState() {
     super.initState();
 
-    // Get current state
     FlutterBluetoothSerial.instance.state.then((state) {
       setState(() {
         _bluetoothState = state;
@@ -45,14 +42,12 @@ class _BluethootView extends State<BluethootView> {
     });
 
     Future.doWhile(() async {
-      // Wait if adapter not enabled
       if ((await FlutterBluetoothSerial.instance.isEnabled) ?? false) {
         return false;
       }
       await Future.delayed(const Duration(milliseconds: 0xDD));
       return true;
     }).then((_) {
-      // Update the address field
       FlutterBluetoothSerial.instance.address.then((address) {
         setState(() {
           _address = address!;
@@ -66,14 +61,11 @@ class _BluethootView extends State<BluethootView> {
       });
     });
 
-    // Listen for futher state changes
     FlutterBluetoothSerial.instance
         .onStateChanged()
         .listen((BluetoothState state) {
       setState(() {
         _bluetoothState = state;
-
-        // Discoverable mode is disabled when Bluetooth gets disabled
         _discoverableTimeoutTimer = null;
         _discoverableTimeoutSecondsLeft = 0;
       });
@@ -100,9 +92,7 @@ class _BluethootView extends State<BluethootView> {
             title: const Text('Enable Bluetooth'),
             value: _bluetoothState.isEnabled,
             onChanged: (bool value) {
-              // Do the request and update with the true value then
               future() async {
-                // async lambda seems to not working
                 if (value) {
                   await FlutterBluetoothSerial.instance.requestEnable();
                 } else {
@@ -266,9 +256,7 @@ class _BluethootView extends State<BluethootView> {
               onPressed: () async {
                 if (_collectingTask?.inProgress ?? false) {
                   await _collectingTask!.cancel();
-                  setState(() {
-                    /* Update for `_collectingTask.inProgress` */
-                  });
+                  setState(() {});
                 } else {
                   final BluetoothDevice? selectedDevice =
                       await Navigator.of(context).push(
@@ -282,9 +270,7 @@ class _BluethootView extends State<BluethootView> {
 
                   if (selectedDevice != null) {
                     await _startBackgroundTask(context, selectedDevice);
-                    setState(() {
-                      /* Update for `_collectingTask.inProgress` */
-                    });
+                    setState(() {});
                   }
                 }
               },

@@ -114,6 +114,8 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
         .toList();
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        toolbarHeight: 75,
         title: const Text('Select device'),
         actions: <Widget>[
           _isDiscovering

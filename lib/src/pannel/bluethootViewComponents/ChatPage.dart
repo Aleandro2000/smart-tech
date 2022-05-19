@@ -104,6 +104,8 @@ class _ChatPage extends State<ChatPage> {
     final serverName = widget.server.name ?? "Unknown";
     return Scaffold(
       appBar: AppBar(
+          centerTitle: true,
+          toolbarHeight: 75,
           title: (isConnecting
               ? Text('Connecting chat to ' + serverName + '...')
               : isConnected

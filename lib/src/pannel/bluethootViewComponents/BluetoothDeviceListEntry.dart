@@ -17,7 +17,7 @@ class BluetoothDeviceListEntry extends ListTile {
           leading: const Icon(Icons.devices),
           title: Text(device.name ?? ""),
           subtitle: Text(device.address.toString()),
-          trailing: ListView(
+          trailing: Column(
             children: <Widget>[
               rssi != null
                   ? Container(

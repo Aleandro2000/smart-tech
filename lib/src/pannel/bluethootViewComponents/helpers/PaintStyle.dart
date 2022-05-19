@@ -41,10 +41,11 @@ class PaintStyle {
     result.write('PaintStyle(');
     if (style == PaintingStyle.stroke) {
       result.write('$style');
-      if (strokeWidth != 0.0)
+      if (strokeWidth != 0.0) {
         result.write(' ${strokeWidth.toStringAsFixed(1)}');
-      else
+      } else {
         result.write(' hairline');
+      }
       if (strokeCap != StrokeCap.butt) result.write(' $strokeCap');
       if (strokeJoin == StrokeJoin.miter) {
         if (strokeMiterLimit != _kStrokeMiterLimitDefault) {

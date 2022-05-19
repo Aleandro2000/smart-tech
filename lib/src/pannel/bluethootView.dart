@@ -164,8 +164,8 @@ class _BluethootView extends State<BluethootView> {
                     setState(() {
                       _discoverableTimeoutTimer?.cancel();
                       _discoverableTimeoutSecondsLeft = timeout;
-                      _discoverableTimeoutTimer =
-                          Timer.periodic(Duration(seconds: 1), (Timer timer) {
+                      _discoverableTimeoutTimer = Timer.periodic(
+                          const Duration(seconds: 1), (Timer timer) {
                         setState(() {
                           if (_discoverableTimeoutSecondsLeft < 0) {
                             FlutterBluetoothSerial.instance.isDiscoverable
@@ -274,7 +274,8 @@ class _BluethootView extends State<BluethootView> {
                       await Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return SelectBondedDevicePage(checkAvailability: false);
+                        return const SelectBondedDevicePage(
+                            checkAvailability: false);
                       },
                     ),
                   );
@@ -299,7 +300,7 @@ class _BluethootView extends State<BluethootView> {
                           builder: (context) {
                             return ScopedModel<BackgroundCollectingTask>(
                               model: _collectingTask!,
-                              child: BackgroundCollectedPage(),
+                              child: const BackgroundCollectedPage(),
                             );
                           },
                         ),

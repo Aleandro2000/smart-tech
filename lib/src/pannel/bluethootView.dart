@@ -315,8 +315,9 @@ class _BluethootView extends State<BluethootView> {
     BluetoothDevice server,
   ) async {
     try {
-      _collectingTask = await BackgroundCollectingTask.connect(server);
-      await _collectingTask!.start();
+      _collectingTask =
+          await BackgroundCollectingTask.connect(server).then((value) => null);
+      await _collectingTask!.start().then((value) => null);
     } catch (ex) {
       _collectingTask?.cancel();
       showDialog(

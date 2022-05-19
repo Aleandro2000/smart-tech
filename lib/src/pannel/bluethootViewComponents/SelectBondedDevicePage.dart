@@ -134,11 +134,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
                 )
         ],
       ),
-      body: ListView(children: [
-        Row(
-          children: list,
-        ),
-      ]),
+      body: ListView(children: list),
     );
   }
 }

@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-
 import './BackgroundCollectingTask.dart';
 import './helpers/LineChart.dart';
 import './helpers/PaintStyle.dart';
 
 class BackgroundCollectedPage extends StatelessWidget {
+  const BackgroundCollectedPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final BackgroundCollectingTask task =
         BackgroundCollectingTask.of(context, rebuildOnChange: true);
 
-    // Arguments shift is needed for timestamps as miliseconds in double could loose precision.
     final int argumentsShift =
         task.samples.first.timestamp.millisecondsSinceEpoch;
 
-    final Duration showDuration =
-        Duration(hours: 2); // @TODO . show duration should be configurable
+    const Duration showDuration = Duration(hours: 2);
     final Iterable<DataSample> lastSamples = task.getLastOf(showDuration);
 
     final Iterable<double> arguments = lastSamples.map((sample) {
@@ -23,11 +22,8 @@ class BackgroundCollectedPage extends StatelessWidget {
           .toDouble();
     });
 
-    // Step for argument labels
-    final Duration argumentsStep =
-        Duration(minutes: 15); // @TODO . step duration should be configurable
+    const Duration argumentsStep = Duration(minutes: 15);
 
-    // Find first timestamp floored to step before
     final DateTime beginningArguments = lastSamples.first.timestamp;
     DateTime beginningArgumentsStep = DateTime(beginningArguments.year,
         beginningArguments.month, beginningArguments.day);
@@ -37,7 +33,6 @@ class BackgroundCollectedPage extends StatelessWidget {
     beginningArgumentsStep = beginningArgumentsStep.subtract(argumentsStep);
     final DateTime endingArguments = lastSamples.last.timestamp;
 
-    // Generate list of timestamps of labels
     final Iterable<DateTime> argumentsLabelsTimestamps = () sync* {
       DateTime timestamp = beginningArgumentsStep;
       yield timestamp;
@@ -47,7 +42,6 @@ class BackgroundCollectedPage extends StatelessWidget {
       }
     }();
 
-    // Map strings for labels
     final Iterable<LabelEntry> argumentsLabels =
         argumentsLabelsTimestamps.map((timestamp) {
       return LabelEntry(
@@ -61,31 +55,30 @@ class BackgroundCollectedPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Collected data'),
+          title: const Text('Collected data'),
           actions: <Widget>[
-            // Progress circle
             (task.inProgress
                 ? FittedBox(
                     child: Container(
-                        margin: new EdgeInsets.all(16.0),
-                        child: CircularProgressIndicator(
+                        margin: const EdgeInsets.all(16.0),
+                        child: const CircularProgressIndicator(
                             valueColor:
                                 AlwaysStoppedAnimation<Color>(Colors.white))))
-                : Container(/* Dummy */)),
-            // Start/stop buttons
+                : Container()),
             (task.inProgress
                 ? IconButton(icon: Icon(Icons.pause), onPressed: task.pause)
                 : IconButton(
-                    icon: Icon(Icons.play_arrow), onPressed: task.reasume)),
+                    icon: const Icon(Icons.play_arrow),
+                    onPressed: task.reasume)),
           ],
         ),
         body: ListView(
           children: <Widget>[
-            Divider(),
-            ListTile(
-              leading: const Icon(Icons.brightness_7),
-              title: const Text('Temperatures'),
-              subtitle: const Text('In Celsius'),
+            const Divider(),
+            const ListTile(
+              leading: Icon(Icons.brightness_7),
+              title: Text('Temperatures'),
+              subtitle: Text('In Celsius'),
             ),
             LineChart(
               constraints: const BoxConstraints.expand(height: 350),
@@ -98,26 +91,25 @@ class BackgroundCollectedPage extends StatelessWidget {
               verticalLinesStyle: const PaintStyle(color: Colors.grey),
               additionalMinimalHorizontalLabelsInterval: 0,
               additionalMinimalVerticalLablesInterval: 0,
-              seriesPointsStyles: [
+              seriesPointsStyles: const [
                 null,
                 null,
-                //const PaintStyle(style: PaintingStyle.stroke, strokeWidth: 1.7*3, color: Colors.indigo, strokeCap: StrokeCap.round),
               ],
-              seriesLinesStyles: [
-                const PaintStyle(
+              seriesLinesStyles: const [
+                PaintStyle(
                     style: PaintingStyle.stroke,
                     strokeWidth: 1.7,
-                    color: Colors.indigoAccent),
-                const PaintStyle(
+                    color: Colors.green),
+                PaintStyle(
                     style: PaintingStyle.stroke,
                     strokeWidth: 1.7,
                     color: Colors.redAccent),
               ],
             ),
-            Divider(),
-            ListTile(
-              leading: const Icon(Icons.filter_vintage),
-              title: const Text('Water pH level'),
+            const Divider(),
+            const ListTile(
+              leading: Icon(Icons.filter_vintage),
+              title: Text('Water pH level'),
             ),
             LineChart(
               constraints: const BoxConstraints.expand(height: 200),
@@ -129,11 +121,11 @@ class BackgroundCollectedPage extends StatelessWidget {
               verticalLinesStyle: const PaintStyle(color: Colors.grey),
               additionalMinimalHorizontalLabelsInterval: 0,
               additionalMinimalVerticalLablesInterval: 0,
-              seriesPointsStyles: [
+              seriesPointsStyles: const [
                 null,
               ],
-              seriesLinesStyles: [
-                const PaintStyle(
+              seriesLinesStyles: const [
+                PaintStyle(
                     style: PaintingStyle.stroke,
                     strokeWidth: 1.7,
                     color: Colors.greenAccent),

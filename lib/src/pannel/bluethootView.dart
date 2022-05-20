@@ -86,7 +86,6 @@ class _BluethootView extends State<BluethootView> {
       appBar: const DefaultAppBarTemplate(title: "Bluethoot View"),
       body: ListView(
         children: <Widget>[
-          const Divider(),
           const ListTile(title: Text('General')),
           SwitchListTile(
             title: const Text('Enable Bluetooth'),

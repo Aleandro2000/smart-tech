@@ -52,138 +52,144 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 600,
-          ),
-          alignment: Alignment.center,
-          margin: const EdgeInsets.fromLTRB(12.5, 50, 12.5, 5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
+        Column(
+          children: [
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
               ),
-            ],
-          ),
-          child: ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-            title: const Text("Change Email"),
-            leading: const Icon(Icons.email),
-            trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ChangeEmail()),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.fromLTRB(12.5, 50, 12.5, 5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                title: const Text("Change Email"),
+                leading: const Icon(Icons.email),
+                trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ChangeEmail()),
+                ),
+              ),
             ),
-          ),
-        ),
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 600,
-          ),
-          alignment: Alignment.center,
-          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
               ),
-            ],
-          ),
-          child: ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-            title: const Text("Change Password"),
-            leading: const Icon(Icons.password),
-            trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ChangePassword()),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                title: const Text("Change Password"),
+                leading: const Icon(Icons.password),
+                trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ChangePassword()),
+                ),
+              ),
             ),
-          ),
-        ),
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 600,
-          ),
-          alignment: Alignment.center,
-          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
               ),
-            ],
-          ),
-          child: ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-            title: const Text("Forgot Password"),
-            leading: const Icon(Icons.question_mark),
-            trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-            onTap: () => forgotPassword(),
-          ),
-        ),
-        Container(
-          constraints: const BoxConstraints(
-            maxWidth: 600,
-          ),
-          alignment: Alignment.center,
-          margin: const EdgeInsets.fromLTRB(12.5, 5, 12.5, 50),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0, 3), // changes position of shadow
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 12.5),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
-            title: const Text("Delete Account"),
-            leading: const Icon(Icons.delete),
-            trailing: const Icon(Icons.keyboard_arrow_right_sharp),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const DeleteAccount()),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                title: const Text("Forgot Password"),
+                leading: const Icon(Icons.question_mark),
+                trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () => forgotPassword(),
+              ),
             ),
-          ),
+            Container(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
+              ),
+              alignment: Alignment.center,
+              margin: const EdgeInsets.fromLTRB(12.5, 5, 12.5, 50),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                title: const Text("Delete Account"),
+                leading: const Icon(Icons.delete),
+                trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const DeleteAccount()),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

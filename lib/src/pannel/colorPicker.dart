@@ -46,7 +46,7 @@ class _ColorPickerViewState extends State<ColorPickerView> {
             children: [
               Container(
                 constraints: const BoxConstraints(
-                  maxWidth: 600,
+                  maxWidth: 640,
                 ),
                 margin: const EdgeInsets.symmetric(vertical: 50),
                 alignment: Alignment.center,

@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "954782046444",
+    "firebase_url": "https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smart-tech-5d678",
+    "storage_bucket": "smart-tech-5d678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954782046444:android:686945f16d8cd74cf72dc9",
+        "android_client_info": {
+          "package_name": "com.example.hard_and_soft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954782046444-g7g2d52l7mt8ttgd1logecegk7dpofvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEk3fk5wTY0tZ6g9Xf0LPr_UxQ0JfWSEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954782046444-g7g2d52l7mt8ttgd1logecegk7dpofvs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "954782046444-9ccqaja7hdann838phe33viee9trihqh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hardAndSoftMobile"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954782046444:android:4e6fa5c91200800ff72dc9",
+        "android_client_info": {
+          "package_name": "com.example.hard_and_soft_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954782046444-g7g2d52l7mt8ttgd1logecegk7dpofvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEk3fk5wTY0tZ6g9Xf0LPr_UxQ0JfWSEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954782046444-g7g2d52l7mt8ttgd1logecegk7dpofvs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "954782046444-9ccqaja7hdann838phe33viee9trihqh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hardAndSoftMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

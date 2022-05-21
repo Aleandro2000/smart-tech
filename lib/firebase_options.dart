@@ -29,6 +29,16 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
+      case TargetPlatform.windows:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
+      case TargetPlatform.linux:
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for linux - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -42,25 +52,28 @@ class DefaultFirebaseOptions {
     messagingSenderId: '954782046444',
     projectId: 'smart-tech-5d678',
     authDomain: 'smart-tech-5d678.firebaseapp.com',
+    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'smart-tech-5d678.appspot.com',
     measurementId: 'G-HQ34FCQ7EM',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAEk3fk5wTY0tZ6g9Xf0LPr_UxQ0JfWSEY',
-    appId: '1:954782046444:android:4e6fa5c91200800ff72dc9',
+    appId: '1:954782046444:android:686945f16d8cd74cf72dc9',
     messagingSenderId: '954782046444',
     projectId: 'smart-tech-5d678',
+    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'smart-tech-5d678.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBxipXB6uqwHyNvLDfyDx-GNXc2rbCypV8',
-    appId: '1:954782046444:ios:953e8520726ab48bf72dc9',
+    appId: '1:954782046444:ios:a227979269b261f7f72dc9',
     messagingSenderId: '954782046444',
     projectId: 'smart-tech-5d678',
+    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'smart-tech-5d678.appspot.com',
-    iosClientId: '954782046444-9ccqaja7hdann838phe33viee9trihqh.apps.googleusercontent.com',
-    iosBundleId: 'com.example.hardAndSoftMobile',
+    iosClientId: '954782046444-bg52pl9df1pc6m95ju2tng3t2reg879l.apps.googleusercontent.com',
+    iosBundleId: 'com.example.hardAndSoft',
   );
 }

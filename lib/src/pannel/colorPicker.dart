@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
-import "package:color_convert/color_convert.dart";
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
+import 'package:hard_and_soft_mobile/src/utils/collections.dart';
 
 class ColorPickerView extends StatefulWidget {
   const ColorPickerView({Key? key}) : super(key: key);
@@ -18,8 +19,14 @@ class _ColorPickerViewState extends State<ColorPickerView> {
     setState(() => pickerColor = color);
   }
 
-  List<int> onSubmit() {
-    return convert.hex.rgb(currentColor.value.toRadixString(16));
+  void onSubmit() async {
+    bool success = await colorSettings(
+        '#${pickerColor.value.toRadixString(16).padLeft(6, '0')}');
+    if (success) {
+      FlushBarTemplate(context, "MESSAGE!", "Successfully sent data! ;)", true);
+    } else {
+      FlushBarTemplate(context, "MESSAGE!", "Failed to send data! :(", true);
+    }
   }
 
   @override
@@ -53,7 +60,7 @@ class _ColorPickerViewState extends State<ColorPickerView> {
                   ),
                   alignment: Alignment.center,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: onSubmit,
                     child: Text(
                       "SUBMIT",
                       style: TextStyle(fontSize: 18, color: pickerColor),

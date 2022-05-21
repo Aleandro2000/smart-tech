@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
+import 'package:color_convert/color_convert.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:hard_and_soft_mobile/src/templates/defaultAppBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/templates/flushBarTemplate.dart';
 import 'package:hard_and_soft_mobile/src/utils/collections.dart';
+import 'package:hard_and_soft_mobile/src/utils/themeColors.dart';
 
 class ColorPickerView extends StatefulWidget {
   const ColorPickerView({Key? key}) : super(key: key);
@@ -12,19 +14,24 @@ class ColorPickerView extends StatefulWidget {
 }
 
 class _ColorPickerViewState extends State<ColorPickerView> {
-  Color pickerColor = Colors.red;
-  Color currentColor = Colors.red;
+  Color pickerColor = ThemeColors.primarySwatchTheme;
+  Color currentColor = ThemeColors.primarySwatchTheme;
 
   void changeColor(Color color) {
     setState(() => pickerColor = color);
   }
 
   void onSubmit() async {
-    bool success = await colorSettings(
-        '#${pickerColor.value.toRadixString(16).padLeft(6, '0')}');
-    if (success) {
-      FlushBarTemplate(context, "MESSAGE!", "Successfully sent data! ;)", true);
-    } else {
+    try {
+      bool success = await colorSettings(
+          convert.hex.rgb(pickerColor.value.toRadixString(16).padLeft(6, '0')));
+      if (success) {
+        FlushBarTemplate(
+            context, "MESSAGE!", "Successfully sent data! ;)", true);
+      } else {
+        FlushBarTemplate(context, "MESSAGE!", "Failed to send data! :(", true);
+      }
+    } catch (err) {
       FlushBarTemplate(context, "MESSAGE!", "Failed to send data! :(", true);
     }
   }

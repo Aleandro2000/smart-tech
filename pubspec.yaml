@@ -55,6 +55,7 @@ dependencies:
   scoped_model: ^1.1.0
   flutter_colorpicker: ^1.0.3
   firebase_database: ^9.0.14
+  color_convert: ^1.0.2
 
 dev_dependencies:
   flutter_test:

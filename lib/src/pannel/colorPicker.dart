@@ -53,6 +53,7 @@ class _ColorPickerViewState extends State<ColorPickerView> {
                 child: ColorPicker(
                   pickerColor: pickerColor,
                   onColorChanged: changeColor,
+                  enableAlpha: false,
                 ),
               ),
               Container(

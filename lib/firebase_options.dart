@@ -47,33 +47,33 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC5Mt_Gshu-RFaF-fHYhLrDwZ_jjNDzG7s',
-    appId: '1:954782046444:web:7f48597f22b8cac0f72dc9',
-    messagingSenderId: '954782046444',
-    projectId: 'smart-tech-5d678',
-    authDomain: 'smart-tech-5d678.firebaseapp.com',
-    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'smart-tech-5d678.appspot.com',
-    measurementId: 'G-HQ34FCQ7EM',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    authDomain: '',
+    databaseURL: '',
+    storageBucket: '',
+    measurementId: '',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAEk3fk5wTY0tZ6g9Xf0LPr_UxQ0JfWSEY',
-    appId: '1:954782046444:android:686945f16d8cd74cf72dc9',
-    messagingSenderId: '954782046444',
-    projectId: 'smart-tech-5d678',
-    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'smart-tech-5d678.appspot.com',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    databaseURL: '',
+    storageBucket: '',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBxipXB6uqwHyNvLDfyDx-GNXc2rbCypV8',
-    appId: '1:954782046444:ios:a227979269b261f7f72dc9',
-    messagingSenderId: '954782046444',
-    projectId: 'smart-tech-5d678',
-    databaseURL: 'https://smart-tech-5d678-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'smart-tech-5d678.appspot.com',
-    iosClientId: '954782046444-bg52pl9df1pc6m95ju2tng3t2reg879l.apps.googleusercontent.com',
-    iosBundleId: 'com.example.hardAndSoft',
+    apiKey: '',
+    appId: '',
+    messagingSenderId: '',
+    projectId: '',
+    databaseURL: '',
+    storageBucket: '',
+    iosClientId: '',
+    iosBundleId: '',
   );
 }

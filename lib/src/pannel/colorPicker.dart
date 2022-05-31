@@ -39,7 +39,7 @@ class _ColorPickerViewState extends State<ColorPickerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefaultAppBarTemplate(title: "Color Picker"),
+      appBar: const DefaultAppBarTemplate(title: "LED Color Picker"),
       body: ListView(
         children: [
           Column(

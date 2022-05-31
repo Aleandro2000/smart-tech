@@ -22,7 +22,7 @@ class BluetoothDeviceListEntry extends ListTile {
             children: <Widget>[
               rssi != null
                   ? Container(
-                      margin: new EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.all(8.0),
                       child: DefaultTextStyle(
                         style: _computeTextStyle(rssi),
                         child: Column(

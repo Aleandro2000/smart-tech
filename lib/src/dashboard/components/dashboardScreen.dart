@@ -23,6 +23,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 semanticsLabel: "Robot Arm Image",
               ),
             ),
+            const Text(
+              "Welcome to SmartTech!",
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 24,
+              ),
+            ),
           ],
         ),
       ],
